@@ -1,0 +1,62 @@
+import { motion } from "framer-motion"
+import { Heart, Terminal } from "lucide-react"
+
+export default function Footer() {
+    const currentYear = new Date().getFullYear()
+
+    return (
+        <footer
+            className="relative border-t py-10"
+            style={{
+                borderColor: "var(--border)",
+                background: "var(--bg-secondary)",
+            }}
+        >
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                    {/* LEFT */}
+                    <motion.a
+                        href="#hero"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex items-center gap-2.5 rounded-xl py-1.5 pr-4 pl-3 transition-colors hover:bg-white/3"
+                    >
+                        <div className="relative flex h-7 w-7 items-center justify-center rounded-lg border border-white/8 bg-white/5">
+                            <Terminal
+                                size={18}
+                                className="text-cyan-400"
+                                strokeWidth={2.5}
+                            />
+                            <div className="absolute inset-0 rounded-lg bg-cyan-400/10 blur-md" />
+                        </div>
+                        <span className="font-mono text-[15px] font-medium tracking-tight text-zinc-100">
+                            rja<span className="text-zinc-500">@</span>
+                            <span className="text-zinc-300">devops</span>
+                        </span>
+                    </motion.a>
+
+                    {/* CENTER */}
+                    <motion.p className="flex items-center gap-2 text-center text-sm text-gray-400">
+                        Fait avec
+                        <motion.span
+                            animate={{ scale: [1, 1.3, 1] }}
+                            transition={{ repeat: Infinity, duration: 1.6 }}
+                        >
+                            <Heart size={15} className="text-red-500" />
+                        </motion.span>
+                        par Joshué Agapé · {currentYear}
+                    </motion.p>
+
+                    {/* RIGHT */}
+                    <div className="flex items-center gap-2 rounded-full border border-gray-800 bg-gray-900/50 px-3 py-1">
+                        <span className="text-emerald-400">●</span>
+
+                        <span className="font-mono text-xs text-gray-400">
+                            Système opérationnel · 99.9% d'uptime
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
+}
