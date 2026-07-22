@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { personalInfo } from "@/data/personal-info"
+import { personalInfo } from "@/data/Personal-info"
 import {
     Mail,
     MapPin,
