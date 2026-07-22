@@ -5,6 +5,7 @@ import Experiences from "@/components/sections/experiences"
 import Footer from "@/components/sections/Footer"
 import Header from "@/components/sections/Header"
 import Hero from "@/components/sections/hero"
+import Projects from "@/components/sections/projects"
 import Services from "@/components/sections/services"
 import Skills from "@/components/sections/skills"
 import ToolBox from "@/components/sections/ToolBox"
@@ -19,6 +20,7 @@ export function App() {
             <Hero />
             <AboutMe />
             <Experiences />
+            <Projects />
             <Skills />
             <Services />
             <WorkProcess />
