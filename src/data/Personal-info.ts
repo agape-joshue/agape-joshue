@@ -13,7 +13,7 @@ export const personalInfo = {
         "En tant que développeur passionné, je suis continuellement motivé par la création de solutions novatrices et par le perfectionnement constant de mes aptitudes techniques.",
     location: "Fianarantsoa 301, Madagascar",
     email: "joshueagape.itpro@gmail.com",
-    github: "https://github.com/joshue-agape",
+    github: "https://github.com/agape-joshue",
     linkedin: "https://www.linkedin.com/in/joshue-agape",
     map: "https://www.google.com/maps/place//@-21.4227759,47.1116422,150m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     availability: "À l'écoute de nouvelles opportunités",
@@ -21,7 +21,7 @@ export const personalInfo = {
     stats: [
         { label: "Années d'expérience", value: "3+" },
         { label: "Projets terminés", value: "10+" },
-        { label: "Taux de disponibilité", value: "99.9%" },
+        /*{ label: "Taux de disponibilité", value: "99.9%" },*/
         { label: "Services proposés", value: "6+" },
     ],
     floating_badges: [
@@ -44,10 +44,10 @@ export const personalInfo = {
             pos: "absolute -left-8 bottom-16",
         },
         {
-            text: "Flutter",
+            text: "Dart",
             color: "text-yellow-400",
             bg_color: "bg-yellow-400",
-            pos: "absolute -right-12 bottom-10",
+            pos: "absolute -right-4 bottom-10",
         },
     ],
 }

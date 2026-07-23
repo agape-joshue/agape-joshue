@@ -211,7 +211,7 @@ export default function Hero() {
 
                         <motion.div
                             variants={staggerItem}
-                            className="grid grid-cols-4 gap-1 border-t border-slate-700 pt-8"
+                            className="grid grid-cols-3 gap-1 border-t border-slate-700 pt-8"
                         >
                             {personalInfo.stats.map((stat, i) => (
                                 <motion.div

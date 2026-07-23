@@ -11,10 +11,10 @@ export type Experience = {
 
 export const experiences: Experience[] = [
     {
-        year: "Oct. 2026 - En cours",
-        type: "Professionnel",
+        year: "Avr. 2026 - Jui. 2026",
+        type: "Freelance",
         title: "Création d'une application web mobile-first (Ton Cosmos)",
-        company: "Freelance",
+        company: "JVN Lab",
         location: "Fianarantsoa 301, Madagascar",
         description:
             "Conception d'une plateforme web mobile-first de produits digitaux sous React et d'une architecture backend asynchrone avec FastAPI, intégrant le paiement Stripe, des calculs astronomiques et un moteur IA (Anthropic) pour générer et livrer des rapports astrologiques PDF personnalisés en moins de 3 minutes.",
@@ -41,7 +41,7 @@ export const experiences: Experience[] = [
     },
     {
         year: "Oct. 2025 - Nov. 2025",
-        type: "Professionnel",
+        type: "Mission",
         title: "Développement de l'application mobile - Mandika",
         company: "RafalTech, Antananarivo",
         location: "Full Remote",
@@ -75,7 +75,7 @@ export const experiences: Experience[] = [
     },
     {
         year: "May 2024 - Sept. 2024",
-        type: "Professionnel",
+        type: "Mission",
         title: "Développement d'API pour la plateforme Hello Archi",
         company: "SfyriTech - Start Up",
         location: "Full Remote",
