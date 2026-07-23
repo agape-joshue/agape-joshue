@@ -15,6 +15,21 @@ import {
 } from "lucide-react"
 import GridBackground from "@/components/grid-background"
 import { AlertComponent, type Alert } from "@/components/alert"
+import { SEND_MESSAGE, useApi } from "@/hooks/use-api"
+
+type DataType = {
+    name: string
+    email: string
+    location: string
+    subject: string
+    message: string
+    id: number
+    last_device_logged: string
+    last_ip_logged: string
+    is_read: boolean
+    created_at: string
+    updated_at: string
+}
 
 const GithubIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -92,6 +107,8 @@ export default function Contact() {
         title: "",
         message: "",
     })
+
+    const { request } = useApi<DataType[]>()
 
     const checkError = () => {
         let hasError = false
@@ -176,48 +193,38 @@ export default function Contact() {
             message: message.value,
         }
 
-        console.log("Payload = ", payload)
-        setTimeout(() => {
-            setSending(false)
-            setAlert({
-                show: true,
-                type: "success",
-                title: "Message envoyé !",
-                message:
-                    "Merci pour votre message ! Je l'ai bien reçu et je vous réponds au plus vite.",
+        try {
+            const response = await request(SEND_MESSAGE, {
+                method: "POST",
+                body: payload,
             })
-            setTimeout(() => setSent(false), 5000)
-        }, 3000)
-
-        /*try {
-            const response = await request("", { method: 'POST', body: payload });
             if (response?.success) {
                 setAlert({
                     show: true,
-                    type: 'success',
-                    title: 'Message envoyé !',
+                    type: "success",
+                    title: "Message envoyé !",
                     message:
                         "Merci pour votre message ! Je l'ai bien reçu et je vous réponds au plus vite.",
-                });
-                setName({ value: '', error: false, error_message: '' });
-                setEmail({ value: '', error: false, error_message: '' });
-                setLocation({ value: '', error: false, error_message: '' });
-                setSubject({ value: '', error: false, error_message: '' });
-                setMessage({ value: '', error: false, error_message: '' });
-                setSent(true);
+                })
+                setName({ value: "", error: false, error_message: "" })
+                setEmail({ value: "", error: false, error_message: "" })
+                setLocation({ value: "", error: false, error_message: "" })
+                setSubject({ value: "", error: false, error_message: "" })
+                setMessage({ value: "", error: false, error_message: "" })
+                setSent(true)
             }
         } catch {
             setAlert({
                 show: true,
-                type: 'error',
+                type: "error",
                 title: "Échec de l'envoi",
                 message:
-                    'Une erreur technique est survenue. Veuillez réessayer ou nous contacter directement.',
-            });
+                    "Une erreur technique est survenue. Veuillez réessayer ou nous contacter directement.",
+            })
         } finally {
-            setSending(false);
-            setTimeout(() => setSent(false), 5000);
-        }*/
+            setSending(false)
+            setTimeout(() => setSent(false), 5000)
+        }
     }
 
     return (

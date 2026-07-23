@@ -150,8 +150,8 @@ body {
 }
 
 ::selection {
-    background-color: var(--accent-subtle);
-    color: var(--accent);
+    background-color: #0082aa;
+    color: #fff;
 }
 
 ::-webkit-scrollbar {
@@ -182,7 +182,7 @@ body {
     height: 0;
 }
 
-/* ─── Custom Cursor ─── */
+/******  Custom Cursor  ******/
 .cursor-dot {
     width: 8px;
     height: 8px;
@@ -231,7 +231,7 @@ body {
     background: #1e80ff;
 }
 
-/* ─── Skill tag ─── */
+/******  Skill tag  ******/
 .skill-tag {
     display: inline-flex;
     align-items: center;
@@ -333,7 +333,7 @@ body {
     background: var(--color-emerald-500);
 }
 
-/* ─── Chat ─── */
+/******  Chat  ******/
 .chat-message-user {
     background: var(--color-cyan-600);
     color: white;

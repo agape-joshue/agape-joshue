@@ -1,3 +1,4 @@
+import AIChat from "@/components/ai-chat"
 import CustomCursor from "@/components/custom-cursor"
 import AboutMe from "@/components/sections/about-me"
 import Contact from "@/components/sections/contact"
@@ -11,7 +12,7 @@ import Skills from "@/components/sections/skills"
 import ToolBox from "@/components/sections/ToolBox"
 import WorkProcess from "@/components/sections/work-process"
 
-export function App() {
+export default function App() {
     return (
         <main className="relative min-h-screen w-full bg-gray-950">
             <CustomCursor />
@@ -27,8 +28,7 @@ export function App() {
             <ToolBox />
             <Contact />
             <Footer />
+            <AIChat />
         </main>
     )
 }
-
-export default App
