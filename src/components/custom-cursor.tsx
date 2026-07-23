@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils"
 import { useEffect, useRef, useState } from "react"
 
 export default function CustomCursor() {
@@ -86,13 +87,13 @@ export default function CustomCursor() {
             <style>{`body { cursor: none !important; } a, button, [role='button'], input, textarea, select, label { cursor: none !important; }`}</style>
             <div
                 ref={dotRef}
-                className={`cursor-dot ${clicking ? "clicking" : ""}`}
+                className={cn("cursor-dot", clicking && "clicking")}
             />
             <div
                 ref={ringRef}
-                className={`cursor-ring ${hovering ? "hovering" : ""}`}
+                className={cn("cursor-ring", hovering && "hovering")}
             />
-            <div className="ripple-container">
+            <div className={cn("ripple-container")}>
                 {ripples.map((r) => (
                     <div
                         key={r.id}

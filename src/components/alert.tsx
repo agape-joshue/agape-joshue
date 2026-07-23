@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils"
 import { AlertTriangle, CheckCircle2, Info, XCircle } from "lucide-react"
 
 export interface Alert {
@@ -55,21 +56,30 @@ export const AlertComponent = ({ alertMessage }: AlertComponentProps) => {
 
     return (
         <div
-            className={`mb-8 grid grid-cols-[3rem_auto] items-center gap-4 rounded-xl border p-4 transition-all duration-300 ${styles.container}`}
+            className={cn(
+                "mb-8 grid grid-cols-[3rem_auto] items-center gap-4 rounded-xl border p-4 transition-all duration-300",
+                styles.container
+            )}
         >
             <div
-                className={`flex h-10 w-10 items-center justify-center rounded-lg ${styles.iconContainer}`}
+                className={cn(
+                    "flex h-10 w-10 items-center justify-center rounded-lg",
+                    styles.iconContainer
+                )}
             >
                 <Icon size={20} />
             </div>
 
-            <div className="flex flex-col gap-0.5">
+            <div className={cn("flex flex-col gap-0.5")}>
                 <h4
-                    className={`text-sm font-semibold tracking-wide ${styles.title}`}
+                    className={cn(
+                        "text-sm font-semibold tracking-wide",
+                        styles.title
+                    )}
                 >
                     {alertMessage.title}
                 </h4>
-                <p className={`text-sm leading-relaxed ${styles.message}`}>
+                <p className={cn("text-sm leading-relaxed", styles.message)}>
                     {alertMessage.message}
                 </p>
             </div>

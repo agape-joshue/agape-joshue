@@ -141,7 +141,11 @@ export default function AIChat() {
                 animate={{ scale: 1 }}
                 transition={{ delay: 1, type: "spring", stiffness: 1000 }}
                 onClick={handleOpen}
-                className={`fixed right-6 bottom-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-cyan-700 shadow-xl transition-all duration-300 ${open ? "pointer-events-none opacity-0" : "opacity-100"}`}
+                className={cn(
+                    "fixed right-6 bottom-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300",
+                    "bg-cyan-700",
+                    open ? "pointer-events-none opacity-0" : "opacity-100"
+                )}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
             >
@@ -150,7 +154,10 @@ export default function AIChat() {
                     <motion.div
                         animate={{ scale: [1, 1.3, 1] }}
                         transition={{ repeat: Infinity, duration: 2 }}
-                        className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full border border-white bg-amber-600 text-xs text-[9px] text-white"
+                        className={cn(
+                            "absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full border text-xs text-[9px]",
+                            "border-white bg-amber-600 text-white"
+                        )}
                     >
                         1
                     </motion.div>
@@ -174,23 +181,55 @@ export default function AIChat() {
                             stiffness: 300,
                             damping: 25,
                         }}
-                        className="fixed right-4.5 bottom-4 z-60 flex h-full max-h-[calc(100vh-6rem)] w-120 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/50 shadow-xl backdrop-blur-[100px] sm:right-6 sm:bottom-3"
+                        className={cn(
+                            "fixed right-4.5 bottom-4 z-60 flex h-full max-h-[calc(100vh-6rem)] w-120 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border shadow-xl backdrop-blur-[100px] sm:right-6 sm:bottom-3",
+                            "border-gray-800 bg-gray-900/50"
+                        )}
                     >
-                        <div className="flex items-center justify-between border-b border-gray-700 bg-gray-800/50 px-5 py-4">
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-9 w-9 animate-pulse items-center justify-center rounded-xl bg-[rgba(255,255,255,0.2)]">
+                        <div
+                            className={cn(
+                                "flex items-center justify-between border-b px-5 py-4",
+                                "border-gray-700 bg-gray-800/50"
+                            )}
+                        >
+                            <div className={cn("flex items-center gap-3")}>
+                                <div
+                                    className={cn(
+                                        "flex h-9 w-9 animate-pulse items-center justify-center rounded-xl",
+                                        "bg-[rgba(255,255,255,0.2)]"
+                                    )}
+                                >
                                     <Sparkles
                                         size={18}
-                                        className="text-cyan-400"
+                                        className={cn("text-cyan-400")}
                                     />
                                 </div>
                                 <div>
-                                    <div className="text-sm font-bold text-white">
+                                    <div
+                                        className={cn(
+                                            "text-sm font-bold",
+                                            "text-white"
+                                        )}
+                                    >
                                         Assistant IA
                                     </div>
-                                    <div className="flex items-center gap-1.5">
-                                        <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-300" />
-                                        <span className="text-[10px] text-white/70">
+                                    <div
+                                        className={cn(
+                                            "flex items-center gap-1.5"
+                                        )}
+                                    >
+                                        <div
+                                            className={cn(
+                                                "h-1.5 w-1.5 animate-pulse rounded-full",
+                                                "bg-green-300"
+                                            )}
+                                        />
+                                        <span
+                                            className={cn(
+                                                "text-[10px]",
+                                                "text-white/70"
+                                            )}
+                                        >
                                             En ligne
                                         </span>
                                     </div>
@@ -200,13 +239,20 @@ export default function AIChat() {
                                 onClick={() => setOpen(false)}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="flex h-7 w-7 items-center justify-center rounded-lg bg-gray-700 text-white"
+                                className={cn(
+                                    "flex h-7 w-7 items-center justify-center rounded-lg",
+                                    "bg-gray-700 text-white"
+                                )}
                             >
                                 <X size={14} />
                             </motion.button>
                         </div>
 
-                        <div className="chat-scroll flex-1 space-y-4 overflow-y-auto p-4">
+                        <div
+                            className={cn(
+                                "chat-scroll flex-1 space-y-4 overflow-y-auto p-4"
+                            )}
+                        >
                             <AnimatePresence>
                                 {messages.map((msg) => (
                                     <motion.div
@@ -221,22 +267,33 @@ export default function AIChat() {
                                             duration: 0.3,
                                             ease: "easeOut",
                                         }}
-                                        className={`relative flex items-end gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                                        className={cn(
+                                            "relative flex items-end gap-2.5",
+                                            msg.role === "user"
+                                                ? "justify-end"
+                                                : "justify-start"
+                                        )}
                                     >
                                         {msg.role === "bot" && (
-                                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-600">
+                                            <div
+                                                className={cn(
+                                                    "mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full",
+                                                    "bg-gray-600"
+                                                )}
+                                            >
                                                 <Bot
                                                     size={20}
-                                                    className="text-white"
+                                                    className={cn("text-white")}
                                                 />
                                             </div>
                                         )}
                                         <div
-                                            className={`relative max-w-[80%] space-y-0.5 px-4 py-3 text-sm leading-relaxed ${
+                                            className={cn(
+                                                "relative max-w-[80%] space-y-0.5 px-4 py-3 text-sm leading-relaxed",
                                                 msg.role === "user"
                                                     ? "chat-message-user"
                                                     : "chat-message-bot"
-                                            }`}
+                                            )}
                                         >
                                             <div
                                                 className={cn(
@@ -247,7 +304,11 @@ export default function AIChat() {
                                                 )}
                                             />
                                             {renderMarkdown(msg.text)}
-                                            <div className="mt-2 text-xs opacity-50">
+                                            <div
+                                                className={cn(
+                                                    "mt-2 text-xs opacity-50"
+                                                )}
+                                            >
                                                 {msg.timestamp.toLocaleTimeString(
                                                     "fr-FR",
                                                     {
@@ -258,7 +319,12 @@ export default function AIChat() {
                                             </div>
                                         </div>
                                         {msg.role === "user" && (
-                                            <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-cyan-600 bg-cyan-600 text-gray-200">
+                                            <div
+                                                className={cn(
+                                                    "mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border",
+                                                    "border-cyan-600 bg-cyan-600 text-gray-200"
+                                                )}
+                                            >
                                                 <User size={16} />
                                             </div>
                                         )}
@@ -272,18 +338,37 @@ export default function AIChat() {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0 }}
-                                        className="flex items-center gap-2.5"
+                                        className={cn(
+                                            "flex items-center gap-2.5"
+                                        )}
                                     >
-                                        <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-600 text-white">
+                                        <div
+                                            className={cn(
+                                                "mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full",
+                                                "bg-gray-600 text-white"
+                                            )}
+                                        >
                                             <Bot size={16} />
                                         </div>
 
-                                        <div className="chat-message-bot relative flex items-center gap-1 px-4 py-3">
-                                            <div className="absolute bottom-1.75 -left-1.25 h-2.5 w-2.5 rotate-45 border-b border-l border-[#30363d] bg-gray-800" />
+                                        <div
+                                            className={cn(
+                                                "chat-message-bot relative flex items-center gap-1 px-4 py-3"
+                                            )}
+                                        >
+                                            <div
+                                                className={cn(
+                                                    "absolute bottom-1.75 -left-1.25 h-2.5 w-2.5 rotate-45 border-b border-l",
+                                                    "border-[#30363d] bg-gray-800"
+                                                )}
+                                            />
                                             {[0, 1, 2].map((i) => (
                                                 <motion.div
                                                     key={i}
-                                                    className="h-1.5 w-1.5 rounded-full bg-gray-400"
+                                                    className={cn(
+                                                        "h-1.5 w-1.5 rounded-full",
+                                                        "bg-gray-400"
+                                                    )}
                                                     animate={{ y: [0, -6, 0] }}
                                                     transition={{
                                                         duration: 0.6,
@@ -300,18 +385,26 @@ export default function AIChat() {
                         </div>
 
                         {messages.length <= 1 && (
-                            <div className="px-4 pb-2">
-                                <p className="mb-2 font-mono text-xs text-gray-400">
+                            <div className={cn("px-4 pb-2")}>
+                                <p
+                                    className={cn(
+                                        "mb-2 font-mono text-xs",
+                                        "text-gray-400"
+                                    )}
+                                >
                                     Questions rapides :
                                 </p>
-                                <div className="flex flex-wrap gap-1.5">
+                                <div className={cn("flex flex-wrap gap-1.5")}>
                                     {quickReplies.map((q) => (
                                         <motion.button
                                             key={q}
                                             onClick={() => sendMessage(q)}
                                             whileHover={{ scale: 1.03 }}
                                             whileTap={{ scale: 0.97 }}
-                                            className="rounded-full border border-gray-700 bg-gray-800/50 px-3 py-1.5 text-xs text-gray-400 transition-colors"
+                                            className={cn(
+                                                "rounded-full border px-3 py-1.5 text-xs transition-colors",
+                                                "border-gray-700 bg-gray-800/50 text-gray-400"
+                                            )}
                                         >
                                             {q}
                                         </motion.button>
@@ -323,14 +416,20 @@ export default function AIChat() {
                         {/* Input */}
                         <form
                             onSubmit={handleSubmit}
-                            className="flex w-full items-center gap-2 border-t border-gray-700 bg-gray-800/50 px-4 py-3"
+                            className={cn(
+                                "flex w-full items-center gap-2 border-t px-4 py-3",
+                                "border-gray-700 bg-gray-800/50"
+                            )}
                         >
                             <input
                                 ref={inputRef}
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 placeholder="Posez votre question..."
-                                className="flex-1 rounded-xl border border-gray-800 bg-gray-800/50 px-4 py-2.5 text-sm text-gray-300 outline-none"
+                                className={cn(
+                                    "flex-1 rounded-xl border px-4 py-2.5 text-sm outline-none",
+                                    "border-gray-800 bg-gray-800/50 text-gray-300"
+                                )}
                                 onFocus={(e) =>
                                     (e.target.style.borderColor =
                                         "var(--color-cyan-400)")
@@ -345,7 +444,10 @@ export default function AIChat() {
                                 disabled={!input.trim() || typing}
                                 whileHover={input.trim() ? { scale: 1.1 } : {}}
                                 whileTap={input.trim() ? { scale: 0.9 } : {}}
-                                className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-600 bg-cyan-500 transition-all"
+                                className={cn(
+                                    "flex h-10 w-10 items-center justify-center rounded-xl border transition-all",
+                                    "border-cyan-600 bg-cyan-500"
+                                )}
                             >
                                 <Send size={15} />
                             </motion.button>
