@@ -16,6 +16,7 @@ import {
 import GridBackground from "@/components/grid-background"
 import { AlertComponent, type Alert } from "@/components/alert"
 import { SEND_MESSAGE, useApi } from "@/hooks/use-api"
+import { cn } from "@/lib/utils"
 
 type DataType = {
     name: string
@@ -228,58 +229,107 @@ export default function Contact() {
     }
 
     return (
-        <section id="contact" className="relative overflow-hidden py-24">
-            <GridBackground className="opacity-25" />
+        <section id="contact" className={cn("relative overflow-hidden py-24")}>
+            <GridBackground className={cn("opacity-25")} />
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div
+                className={cn(
+                    "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+                )}
+            >
                 {/* GitHub Style Header */}
                 <motion.div
                     ref={ref}
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
-                    className="mb-16 text-center"
+                    className={cn("mb-16 text-center")}
                 >
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-800 bg-[#161b22] px-3 py-1">
-                        <div className="h-2 w-2 rounded-full bg-[#3fb950]" />
-                        <span className="text-xs font-semibold text-[#7d8590]">
+                    <div
+                        className={cn(
+                            "mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1",
+                            "border-gray-800 bg-[#161b22]"
+                        )}
+                    >
+                        <div
+                            className={cn(
+                                "h-2 w-2 rounded-full",
+                                "bg-[#3fb950]"
+                            )}
+                        />
+                        <span
+                            className={cn(
+                                "text-xs font-semibold",
+                                "text-[#7d8590]"
+                            )}
+                        >
                             À l'écoute du marché
                         </span>
                     </div>
 
-                    <h2 className="mb-4 text-5xl font-bold text-[#c9d1d9] sm:text-6xl">
+                    <h2
+                        className={cn(
+                            "mb-4 text-5xl font-bold sm:text-6xl",
+                            "text-[#c9d1d9]"
+                        )}
+                    >
                         Discutons{" "}
-                        <span className="text-emerald-400">ensemble</span>
+                        <span className={cn("text-emerald-400")}>ensemble</span>
                     </h2>
-                    <p className="mx-auto max-w-2xl text-lg text-[#8b949e]">
+                    <p
+                        className={cn(
+                            "mx-auto max-w-2xl text-lg",
+                            "text-[#8b949e]"
+                        )}
+                    >
                         Discutons de votre prochain projet. Je réponds
                         généralement en moins de 24 heures.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                <div className={cn("grid grid-cols-1 gap-6 lg:grid-cols-3")}>
                     {/* Left Sidebar - Contact Info */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="space-y-4 lg:col-span-1"
+                        className={cn("space-y-4 lg:col-span-1")}
                     >
                         {/* Status Card */}
-                        <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-6">
-                            <div className="flex items-start gap-3">
-                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-[#238636]/20 bg-[#238636]/10">
+                        <div
+                            className={cn(
+                                "rounded-lg border p-6",
+                                "border-gray-800 bg-gray-900/50"
+                            )}
+                        >
+                            <div className={cn("flex items-start gap-3")}>
+                                <div
+                                    className={cn(
+                                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-md border",
+                                        "border-[#238636]/20 bg-[#238636]/10"
+                                    )}
+                                >
                                     <CheckCircle2
                                         size={20}
-                                        className="text-[#3fb950]"
                                         strokeWidth={2}
+                                        className={cn("text-[#3fb950]")}
                                     />
                                 </div>
                                 <div>
-                                    <h4 className="mb-2 text-sm font-semibold text-[#c9d1d9]">
+                                    <h4
+                                        className={cn(
+                                            "mb-2 text-sm font-semibold",
+                                            "text-[#c9d1d9]"
+                                        )}
+                                    >
                                         Ouvert aux collaborations
                                     </h4>
-                                    <p className="text-xs leading-relaxed text-[#8b949e]">
+                                    <p
+                                        className={cn(
+                                            "text-xs leading-relaxed",
+                                            "text-[#8b949e]"
+                                        )}
+                                    >
                                         Actuellement disponible pour des
                                         missions en freelance et à l'écoute de
                                         nouvelles opportunités.
@@ -288,13 +338,33 @@ export default function Contact() {
                             </div>
                         </div>
                         {/* Profile Card */}
-                        <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-6">
-                            <div className="mb-6 flex items-center gap-4 border-b border-[#21262d] pb-6">
+                        <div
+                            className={cn(
+                                "rounded-lg border p-6",
+                                "border-gray-800 bg-gray-900/50"
+                            )}
+                        >
+                            <div
+                                className={cn(
+                                    "mb-6 flex items-center gap-4 border-b pb-6",
+                                    "border-[#21262d]"
+                                )}
+                            >
                                 <div>
-                                    <h3 className="text-lg font-semibold text-[#c9d1d9]">
+                                    <h3
+                                        className={cn(
+                                            "text-lg font-semibold",
+                                            "text-[#c9d1d9]"
+                                        )}
+                                    >
                                         Raharison Joshué Agapé
                                     </h3>
-                                    <p className="text-sm text-[#8b949e]">
+                                    <p
+                                        className={cn(
+                                            "text-sm",
+                                            "text-[#8b949e]"
+                                        )}
+                                    >
                                         Développeur Full Stack
                                     </p>
                                 </div>
@@ -314,9 +384,17 @@ export default function Contact() {
                                             href={href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group flex items-center gap-3 rounded-md px-3 py-2.5 transition-colors duration-200 hover:bg-[#21262d]"
+                                            className={cn(
+                                                "group flex items-center gap-3 rounded-md px-3 py-2.5 transition-colors duration-200",
+                                                "hover:bg-[#21262d]"
+                                            )}
                                         >
-                                            <div className="h-5 w-5 shrink-0 text-[#8b949e] transition-colors group-hover:text-[#58a6ff]">
+                                            <div
+                                                className={cn(
+                                                    "h-5 w-5 shrink-0 transition-colors",
+                                                    "text-[#8b949e] group-hover:text-[#58a6ff]"
+                                                )}
+                                            >
                                                 {isLucide ? (
                                                     <Icon
                                                         size={18}
@@ -326,17 +404,32 @@ export default function Contact() {
                                                     <Icon />
                                                 )}
                                             </div>
-                                            <div className="min-w-0 flex-1">
-                                                <p className="mb-0.5 text-xs text-[#8b949e]">
+                                            <div
+                                                className={cn("min-w-0 flex-1")}
+                                            >
+                                                <p
+                                                    className={cn(
+                                                        "mb-0.5 text-xs",
+                                                        "text-[#8b949e]"
+                                                    )}
+                                                >
                                                     {label}
                                                 </p>
-                                                <p className="truncate text-sm text-[#c9d1d9] transition-colors group-hover:text-[#58a6ff]">
+                                                <p
+                                                    className={cn(
+                                                        "truncate text-sm transition-colors",
+                                                        "text-[#c9d1d9] group-hover:text-[#58a6ff]"
+                                                    )}
+                                                >
                                                     {value}
                                                 </p>
                                             </div>
                                             <ExternalLink
                                                 size={14}
-                                                className="text-[#8b949e] opacity-0 transition-opacity group-hover:opacity-100"
+                                                className={cn(
+                                                    "opacity-0 transition-opacity group-hover:opacity-100",
+                                                    "text-[#8b949e]"
+                                                )}
                                             />
                                         </a>
                                     )
@@ -350,15 +443,35 @@ export default function Contact() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="lg:col-span-2"
+                        className={cn("lg:col-span-2")}
                     >
-                        <div className="rounded-lg border border-gray-800 bg-gray-900/50">
+                        <div
+                            className={cn(
+                                "rounded-lg border",
+                                "border-gray-800 bg-gray-900/50"
+                            )}
+                        >
                             {/* Form Header */}
-                            <div className="border-b border-[#21262d] px-6 py-4">
-                                <h3 className="text-lg font-semibold text-[#c9d1d9]">
+                            <div
+                                className={cn(
+                                    "border-b px-6 py-4",
+                                    "border-[#21262d]"
+                                )}
+                            >
+                                <h3
+                                    className={cn(
+                                        "text-lg font-semibold",
+                                        "text-[#c9d1d9]"
+                                    )}
+                                >
                                     Formulaire de contact
                                 </h3>
-                                <p className="mt-1 text-sm text-[#8b949e]">
+                                <p
+                                    className={cn(
+                                        "mt-1 text-sm",
+                                        "text-[#8b949e]"
+                                    )}
+                                >
                                     Remplissez le formulaire ci-dessous pour
                                     lancer la discussion
                                 </p>
@@ -370,7 +483,7 @@ export default function Contact() {
                                     e.preventDefault()
                                     handleSubmit()
                                 }}
-                                className="space-y-5 p-6"
+                                className={cn("space-y-5 p-6")}
                             >
                                 {alertMessage.show && (
                                     <AlertComponent
@@ -379,9 +492,18 @@ export default function Contact() {
                                 )}
 
                                 {/* Name & Email */}
-                                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                                <div
+                                    className={cn(
+                                        "grid grid-cols-1 gap-5 sm:grid-cols-2"
+                                    )}
+                                >
                                     <div>
-                                        <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#c9d1d9]">
+                                        <label
+                                            className={cn(
+                                                "mb-2 flex items-center gap-2 text-sm font-semibold",
+                                                "text-[#c9d1d9]"
+                                            )}
+                                        >
                                             <User size={14} strokeWidth={2} />
                                             Votre nom
                                         </label>
@@ -396,14 +518,30 @@ export default function Contact() {
                                                 })
                                             }
                                             placeholder="Saisissez votre nom"
-                                            className={`w-full rounded-md border bg-gray-950/10 px-3 py-2 text-sm text-[#c9d1d9] placeholder-[#6e7681] transition-colors focus:ring-1 focus:outline-none ${name.error ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"}`}
+                                            className={cn(
+                                                "w-full rounded-md border px-3 py-2 text-sm transition-colors focus:ring-1 focus:outline-none",
+                                                "bg-gray-950/10 text-[#c9d1d9] placeholder-[#6e7681]",
+                                                name.error
+                                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                                    : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"
+                                            )}
                                         />
-                                        <p className="mt-1 text-sm text-red-500">
+                                        <p
+                                            className={cn(
+                                                "mt-1 text-sm",
+                                                "text-red-500"
+                                            )}
+                                        >
                                             {name.error_message}
                                         </p>
                                     </div>
                                     <div>
-                                        <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#c9d1d9]">
+                                        <label
+                                            className={cn(
+                                                "mb-2 flex items-center gap-2 text-sm font-semibold",
+                                                "text-[#c9d1d9]"
+                                            )}
+                                        >
                                             <Mail size={14} strokeWidth={2} />
                                             Adresse e-mail
                                         </label>
@@ -418,18 +556,38 @@ export default function Contact() {
                                                 })
                                             }
                                             placeholder="contact@exemple.com"
-                                            className={`w-full rounded-md border bg-gray-950/10 px-3 py-2 text-sm text-[#c9d1d9] placeholder-[#6e7681] transition-colors focus:ring-1 focus:outline-none ${email.error ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"}`}
+                                            className={cn(
+                                                "w-full rounded-md border px-3 py-2 text-sm transition-colors focus:ring-1 focus:outline-none",
+                                                "bg-gray-950/10 text-[#c9d1d9] placeholder-[#6e7681]",
+                                                email.error
+                                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                                    : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"
+                                            )}
                                         />
-                                        <p className="mt-1 text-sm text-red-500">
+                                        <p
+                                            className={cn(
+                                                "mt-1 text-sm",
+                                                "text-red-500"
+                                            )}
+                                        >
                                             {email.error_message}
                                         </p>
                                     </div>
                                 </div>
 
                                 {/* Location & Subject */}
-                                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                                <div
+                                    className={cn(
+                                        "grid grid-cols-1 gap-5 sm:grid-cols-2"
+                                    )}
+                                >
                                     <div>
-                                        <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#c9d1d9]">
+                                        <label
+                                            className={cn(
+                                                "mb-2 flex items-center gap-2 text-sm font-semibold",
+                                                "text-[#c9d1d9]"
+                                            )}
+                                        >
                                             <Building2
                                                 size={14}
                                                 strokeWidth={2}
@@ -447,14 +605,30 @@ export default function Contact() {
                                                 })
                                             }
                                             placeholder="Ville, Pays"
-                                            className={`w-full rounded-md border bg-gray-950/10 px-3 py-2 text-sm text-[#c9d1d9] placeholder-[#6e7681] transition-colors focus:ring-1 focus:outline-none ${location.error ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"}`}
+                                            className={cn(
+                                                "w-full rounded-md border px-3 py-2 text-sm transition-colors focus:ring-1 focus:outline-none",
+                                                "bg-gray-950/10 text-[#c9d1d9] placeholder-[#6e7681]",
+                                                location.error
+                                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                                    : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"
+                                            )}
                                         />
-                                        <p className="mt-1 text-sm text-red-500">
+                                        <p
+                                            className={cn(
+                                                "mt-1 text-sm",
+                                                "text-red-500"
+                                            )}
+                                        >
                                             {location.error_message}
                                         </p>
                                     </div>
                                     <div>
-                                        <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#c9d1d9]">
+                                        <label
+                                            className={cn(
+                                                "mb-2 flex items-center gap-2 text-sm font-semibold",
+                                                "text-[#c9d1d9]"
+                                            )}
+                                        >
                                             <FileText
                                                 size={14}
                                                 strokeWidth={2}
@@ -472,9 +646,20 @@ export default function Contact() {
                                                 })
                                             }
                                             placeholder="Quel est l'objet de votre demande ?"
-                                            className={`w-full rounded-md border bg-gray-950/10 px-3 py-2 text-sm text-[#c9d1d9] placeholder-[#6e7681] transition-colors focus:ring-1 focus:outline-none ${subject.error ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"}`}
+                                            className={cn(
+                                                "w-full rounded-md border px-3 py-2 text-sm transition-colors focus:ring-1 focus:outline-none",
+                                                "bg-gray-950/10 text-[#c9d1d9] placeholder-[#6e7681]",
+                                                subject.error
+                                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                                    : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"
+                                            )}
                                         />
-                                        <p className="mt-1 text-sm text-red-500">
+                                        <p
+                                            className={cn(
+                                                "mt-1 text-sm",
+                                                "text-red-500"
+                                            )}
+                                        >
                                             {subject.error_message}
                                         </p>
                                     </div>
@@ -482,7 +667,12 @@ export default function Contact() {
 
                                 {/* Message */}
                                 <div>
-                                    <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#c9d1d9]">
+                                    <label
+                                        className={cn(
+                                            "mb-2 flex items-center gap-2 text-sm font-semibold",
+                                            "text-[#c9d1d9]"
+                                        )}
+                                    >
                                         <MessageSquare
                                             size={14}
                                             strokeWidth={2}
@@ -500,16 +690,37 @@ export default function Contact() {
                                             })
                                         }
                                         placeholder="Dites-en plus sur votre projet..."
-                                        className={`w-full rounded-md border bg-gray-950/10 px-3 py-2 text-sm text-[#c9d1d9] placeholder-[#6e7681] transition-colors focus:ring-1 focus:outline-none ${message.error ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"}`}
+                                        className={cn(
+                                            "w-full rounded-md border px-3 py-2 text-sm transition-colors focus:ring-1 focus:outline-none",
+                                            "bg-gray-950/10 text-[#c9d1d9] placeholder-[#6e7681]",
+                                            message.error
+                                                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                                : "border-gray-800 focus:border-[#58a6ff] focus:ring-[#58a6ff]"
+                                        )}
                                     />
-                                    <p className="mt-1 text-sm text-red-500">
+                                    <p
+                                        className={cn(
+                                            "mt-1 text-sm",
+                                            "text-red-500"
+                                        )}
+                                    >
                                         {message.error_message}
                                     </p>
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="flex flex-col items-center justify-center gap-4 border-t border-gray-800 pt-4 md:flex-row md:justify-between">
-                                    <p className="text-xs text-[#8b949e]">
+                                <div
+                                    className={cn(
+                                        "flex flex-col items-center justify-center gap-4 border-t pt-4 md:flex-row md:justify-between",
+                                        "border-gray-800"
+                                    )}
+                                >
+                                    <p
+                                        className={cn(
+                                            "text-xs",
+                                            "text-[#8b949e]"
+                                        )}
+                                    >
                                         Veuillez remplir tous les champs.
                                     </p>
                                     <motion.button
@@ -525,13 +736,14 @@ export default function Contact() {
                                                 ? { scale: 0.98 }
                                                 : {}
                                         }
-                                        className={`flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 text-sm font-semibold transition-all duration-200 ${
+                                        className={cn(
+                                            "flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 text-sm font-semibold transition-all duration-200",
                                             sent
                                                 ? "border border-[#238636] bg-[#238636] text-white hover:bg-[#2ea043]"
                                                 : sending
                                                   ? "cursor-not-allowed border border-gray-800 bg-[#21262d] text-[#6e7681]"
                                                   : "border border-[#238636] bg-[#238636] text-white shadow-[0_0_0_3px_rgba(35,134,54,0.1)] hover:bg-[#2ea043]"
-                                        }`}
+                                        )}
                                     >
                                         {sent ? (
                                             <>
@@ -550,7 +762,10 @@ export default function Contact() {
                                                         repeat: Infinity,
                                                         ease: "linear",
                                                     }}
-                                                    className="h-4 w-4 rounded-full border-2 border-[#6e7681]/30 border-t-[#6e7681]"
+                                                    className={cn(
+                                                        "h-4 w-4 rounded-full border-2",
+                                                        "border-[#6e7681]/30 border-t-[#6e7681]"
+                                                    )}
                                                 />
                                                 Envoi en cours...
                                             </>
@@ -569,16 +784,41 @@ export default function Contact() {
                         </div>
 
                         {/* GitHub Style Footer Note */}
-                        <div className="mt-4 rounded-lg border border-gray-800 bg-gray-900/50 px-4 py-3">
-                            <div className="flex items-start gap-3">
-                                <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-[#58a6ff]">
-                                    <div className="h-1.5 w-1.5 rounded-full bg-[#58a6ff]" />
+                        <div
+                            className={cn(
+                                "mt-4 rounded-lg border px-4 py-3",
+                                "border-gray-800 bg-gray-900/50"
+                            )}
+                        >
+                            <div className={cn("flex items-start gap-3")}>
+                                <div
+                                    className={cn(
+                                        "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2",
+                                        "border-[#58a6ff]"
+                                    )}
+                                >
+                                    <div
+                                        className={cn(
+                                            "h-1.5 w-1.5 rounded-full",
+                                            "bg-[#58a6ff]"
+                                        )}
+                                    />
                                 </div>
                                 <div>
-                                    <h4 className="mb-1 text-sm font-semibold text-[#c9d1d9]">
+                                    <h4
+                                        className={cn(
+                                            "mb-1 text-sm font-semibold",
+                                            "text-[#c9d1d9]"
+                                        )}
+                                    >
                                         Délai de réponse
                                     </h4>
-                                    <p className="text-xs leading-relaxed text-[#8b949e]">
+                                    <p
+                                        className={cn(
+                                            "text-xs leading-relaxed",
+                                            "text-[#8b949e]"
+                                        )}
+                                    >
                                         Je réponds généralement à toutes les
                                         demandes sous 24 heures les jours
                                         ouvrés. Pour les questions urgentes,

@@ -4,6 +4,7 @@ import { Mail, Zap, MapPin, ExternalLink } from "lucide-react"
 import { personalInfo } from "@/data/Personal-info"
 import { staggerContainer, staggerItem } from "@/lib/animations"
 import GridBackground from "@/components/grid-background"
+import { cn } from "@/lib/utils"
 
 const GithubIcon = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -31,11 +32,17 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="relative flex min-h-screen items-center justify-center overflow-hidden"
+            className={cn(
+                "relative flex min-h-screen items-center justify-center overflow-hidden"
+            )}
         >
-            <GridBackground className="opacity-30" />
+            <GridBackground className={cn("opacity-30")} />
 
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div
+                className={cn(
+                    "pointer-events-none absolute inset-0 overflow-hidden"
+                )}
+            >
                 <motion.div
                     animate={{
                         scale: [1, 1.08, 1],
@@ -47,7 +54,10 @@ export default function Hero() {
                         repeat: Infinity,
                         ease: "easeInOut",
                     }}
-                    className="absolute top-20 right-[10%] h-72 w-72 rounded-full bg-cyan-500/8 blur-2xl"
+                    className={cn(
+                        "absolute top-20 right-[10%] h-72 w-72 rounded-full blur-2xl",
+                        "bg-cyan-500/8"
+                    )}
                 />
                 <motion.div
                     animate={{
@@ -61,45 +71,91 @@ export default function Hero() {
                         ease: "easeInOut",
                         delay: 3,
                     }}
-                    className="absolute bottom-20 left-[5%] h-80 w-80 rounded-full bg-emerald-500/6 blur-2xl"
+                    className={cn(
+                        "absolute bottom-20 left-[5%] h-80 w-80 rounded-full blur-2xl",
+                        "bg-emerald-500/6"
+                    )}
                 />
             </div>
-            <div className="relative z-10 mx-auto max-w-7xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-15">
-                <div className="grid min-h-[88vh] grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
+            <div
+                className={cn(
+                    "relative z-10 mx-auto max-w-7xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-15"
+                )}
+            >
+                <div
+                    className={cn(
+                        "grid min-h-[88vh] grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24"
+                    )}
+                >
                     <motion.div
                         variants={staggerContainer}
                         initial="hidden"
                         animate="visible"
                         style={{ y: textY }}
-                        className="order-2 flex flex-col lg:order-1"
+                        className={cn("order-2 flex flex-col lg:order-1")}
                     >
                         <motion.div
                             variants={staggerItem}
-                            className="mb-8 flex flex-wrap items-center gap-3"
+                            className={cn(
+                                "mb-8 flex flex-wrap items-center gap-3"
+                            )}
                         >
-                            <div className="relative flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-3.5 py-1.5 font-mono text-xs font-semibold text-emerald-400 backdrop-blur-sm">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                            <div
+                                className={cn(
+                                    "relative flex items-center gap-2 rounded-full border px-3.5 py-1.5 font-mono text-xs font-semibold backdrop-blur-sm",
+                                    "border-emerald-500/30 bg-emerald-500/8 text-emerald-400"
+                                )}
+                            >
+                                <span className={cn("relative flex h-2 w-2")}>
+                                    <span
+                                        className={cn(
+                                            "absolute inline-flex h-full w-full animate-ping rounded-full opacity-75",
+                                            "bg-emerald-400"
+                                        )}
+                                    />
+                                    <span
+                                        className={cn(
+                                            "relative inline-flex h-2 w-2 rounded-full",
+                                            "bg-emerald-400"
+                                        )}
+                                    />
                                 </span>
                                 {personalInfo.availability}
                             </div>
 
-                            <div className="h-4 w-px bg-slate-700" />
+                            <div className={cn("h-4 w-px", "bg-slate-700")} />
 
-                            <span className="flex items-center gap-1.5 font-mono text-sm font-normal text-slate-400">
-                                <MapPin size={15} className="text-slate-400" />
+                            <span
+                                className={cn(
+                                    "flex items-center gap-1.5 font-mono text-sm font-normal",
+                                    "text-slate-400"
+                                )}
+                            >
+                                <MapPin
+                                    size={15}
+                                    className={cn("text-slate-400")}
+                                />
                                 {personalInfo.location}
                             </span>
                         </motion.div>
 
                         <motion.div variants={staggerItem} className="mb-5">
-                            <p className="mb-3 font-mono text-xs font-semibold tracking-[0.25em] text-cyan-500 uppercase">
+                            <p
+                                className={cn(
+                                    "mb-3 font-mono text-xs font-semibold tracking-[0.25em] uppercase",
+                                    "text-cyan-500"
+                                )}
+                            >
                                 Salut, moi c'est
                             </p>
-                            <h1 className="text-5xl leading-[1.02] font-black tracking-tight text-white sm:text-6xl lg:text-[4.5rem]">
+                            <h1
+                                className={cn(
+                                    "text-5xl leading-[1.02] font-black tracking-tight sm:text-6xl lg:text-[4.5rem]",
+                                    "text-white"
+                                )}
+                            >
                                 {personalInfo.name.split(" ")[0]}
-                                <span className="ml-4 text-cyan-400">
+                                <span className={cn("ml-4", "text-cyan-400")}>
                                     {personalInfo.name.split(" ")[1]}
                                 </span>
                             </h1>
@@ -107,12 +163,22 @@ export default function Hero() {
 
                         <motion.div
                             variants={staggerItem}
-                            className="mb-7 flex h-8 items-center gap-3"
+                            className={cn("mb-7 flex h-8 items-center gap-3")}
                         >
-                            <span className="font-mono text-lg text-slate-400">
+                            <span
+                                className={cn(
+                                    "font-mono text-lg",
+                                    "text-slate-400"
+                                )}
+                            >
                                 {">"}
                             </span>
-                            <span className="font-mono text-lg font-semibold text-cyan-400 sm:text-xl">
+                            <span
+                                className={cn(
+                                    "font-mono text-lg font-semibold sm:text-xl",
+                                    "text-cyan-400"
+                                )}
+                            >
                                 <TypeAnimation
                                     sequence={[
                                         "Développeur Frontend",
@@ -139,22 +205,33 @@ export default function Hero() {
 
                         <motion.p
                             variants={staggerItem}
-                            className="mb-9 max-w-lg text-sm leading-relaxed text-slate-400 sm:text-base"
+                            className={cn(
+                                "mb-9 max-w-lg text-sm leading-relaxed sm:text-base",
+                                "text-slate-400"
+                            )}
                         >
                             {personalInfo.tagline}
                         </motion.p>
 
                         <motion.div
                             variants={staggerItem}
-                            className="mb-10 flex flex-wrap gap-3"
+                            className={cn("mb-10 flex flex-wrap gap-3")}
                         >
                             <motion.a
                                 href="#contact"
                                 whileHover={{ scale: 1.03, y: -1 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/25 transition-shadow hover:shadow-xl hover:shadow-cyan-500/40"
+                                className={cn(
+                                    "group relative flex items-center gap-2 overflow-hidden rounded-xl px-6 py-3 text-sm font-semibold shadow-lg transition-shadow hover:shadow-xl",
+                                    "bg-cyan-400 text-slate-950 shadow-cyan-500/25 hover:shadow-cyan-500/40"
+                                )}
                             >
-                                <span className="absolute inset-0 -translate-x-full skew-x-12 bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                                <span
+                                    className={cn(
+                                        "absolute inset-0 -translate-x-full skew-x-12 bg-linear-to-r transition-transform duration-700 group-hover:translate-x-full",
+                                        "from-transparent via-white/20 to-transparent"
+                                    )}
+                                />
                                 <Mail size={15} />
                                 Contactez-moi
                             </motion.a>
@@ -163,25 +240,44 @@ export default function Hero() {
                                 href="#projects"
                                 whileHover={{ scale: 1.03, y: -1 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="group flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-6 py-3 text-sm font-semibold text-slate-300 transition-all duration-200 hover:border-slate-500 hover:bg-slate-800"
+                                className={cn(
+                                    "group flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold transition-all duration-200",
+                                    "border-slate-700 bg-slate-900 text-slate-300 hover:border-slate-500 hover:bg-slate-800"
+                                )}
                             >
-                                <Zap size={15} className="text-cyan-400" />
+                                <Zap
+                                    size={15}
+                                    className={cn("text-cyan-400")}
+                                />
                                 Découvrir mes projets
                                 <ExternalLink
                                     size={13}
-                                    className="text-slate-500 transition-colors group-hover:text-slate-400"
+                                    className={cn(
+                                        "transition-colors",
+                                        "text-slate-500 group-hover:text-slate-400"
+                                    )}
                                 />
                             </motion.a>
                         </motion.div>
 
                         <motion.div
                             variants={staggerItem}
-                            className="mb-12 flex items-center gap-3"
+                            className={cn("mb-12 flex items-center gap-3")}
                         >
-                            <span className="font-mono text-sm text-slate-400">
+                            <span
+                                className={cn(
+                                    "font-mono text-sm",
+                                    "text-slate-400"
+                                )}
+                            >
                                 Suivez-moi sur
                             </span>
-                            <div className="h-px max-w-10 flex-1 bg-slate-600" />
+                            <div
+                                className={cn(
+                                    "h-px max-w-10 flex-1",
+                                    "bg-slate-600"
+                                )}
+                            />
 
                             {socialLinks.map(({ icon: Icon, href, label }) => (
                                 <motion.a
@@ -192,7 +288,10 @@ export default function Hero() {
                                     whileHover={{ scale: 1.15, y: -2 }}
                                     whileTap={{ scale: 0.92 }}
                                     title={label}
-                                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-400 transition-all duration-200 hover:border-slate-600 hover:bg-slate-800 hover:text-slate-200"
+                                    className={cn(
+                                        "flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200",
+                                        "border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 hover:bg-slate-800 hover:text-slate-200"
+                                    )}
                                 >
                                     <Icon />
                                 </motion.a>
@@ -203,7 +302,10 @@ export default function Hero() {
                                 whileHover={{ scale: 1.15, y: -2 }}
                                 whileTap={{ scale: 0.92 }}
                                 title="Email"
-                                className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-400 transition-all duration-200 hover:border-slate-600 hover:bg-slate-800 hover:text-slate-200"
+                                className={cn(
+                                    "flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200",
+                                    "border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 hover:bg-slate-800 hover:text-slate-200"
+                                )}
                             >
                                 <Mail size={15} />
                             </motion.a>
@@ -211,7 +313,10 @@ export default function Hero() {
 
                         <motion.div
                             variants={staggerItem}
-                            className="grid grid-cols-3 gap-1 border-t border-slate-700 pt-8"
+                            className={cn(
+                                "grid grid-cols-3 gap-1 border-t pt-8",
+                                "border-slate-700"
+                            )}
                         >
                             {personalInfo.stats.map((stat, i) => (
                                 <motion.div
@@ -222,12 +327,25 @@ export default function Hero() {
                                         delay: 0.9 + i * 0.1,
                                         duration: 0.5,
                                     }}
-                                    className="group flex cursor-default flex-col items-center rounded-xl px-2 py-3 text-center transition-colors hover:bg-slate-900/60"
+                                    className={cn(
+                                        "group flex cursor-default flex-col items-center rounded-xl px-2 py-3 text-center transition-colors",
+                                        "hover:bg-slate-900/60"
+                                    )}
                                 >
-                                    <span className="font-mono text-2xl font-black text-white transition-colors group-hover:text-cyan-400">
+                                    <span
+                                        className={cn(
+                                            "font-mono text-2xl font-black transition-colors",
+                                            "text-white group-hover:text-cyan-400"
+                                        )}
+                                    >
                                         {stat.value}
                                     </span>
-                                    <span className="mt-1 font-mono text-[11px] leading-tight tracking-wide text-slate-400 uppercase">
+                                    <span
+                                        className={cn(
+                                            "mt-1 font-mono text-[11px] leading-tight tracking-wide uppercase",
+                                            "text-slate-400"
+                                        )}
+                                    >
                                         {stat.label}
                                     </span>
                                 </motion.div>
@@ -244,9 +362,11 @@ export default function Hero() {
                             ease: [0.25, 0.46, 0.45, 0.94],
                         }}
                         style={{ y: imageY }}
-                        className="order-1 flex justify-center lg:order-2 lg:justify-end"
+                        className={cn(
+                            "order-1 flex justify-center lg:order-2 lg:justify-end"
+                        )}
                     >
-                        <div className="relative my-10">
+                        <div className={cn("relative my-10")}>
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{
@@ -254,7 +374,10 @@ export default function Hero() {
                                     repeat: Infinity,
                                     ease: "linear",
                                 }}
-                                className="absolute -inset-8 rounded-full border border-dashed border-slate-800 opacity-60"
+                                className={cn(
+                                    "absolute -inset-8 rounded-full border border-dashed opacity-60",
+                                    "border-slate-800"
+                                )}
                             />
                             <motion.div
                                 animate={{ rotate: -360 }}
@@ -263,7 +386,10 @@ export default function Hero() {
                                     repeat: Infinity,
                                     ease: "linear",
                                 }}
-                                className="absolute -inset-14 rounded-full border border-slate-800/40 opacity-40"
+                                className={cn(
+                                    "absolute -inset-14 rounded-full border opacity-40",
+                                    "border-slate-800/40"
+                                )}
                                 style={{
                                     borderStyle: "dashed",
                                     borderWidth: "1px",
@@ -278,14 +404,21 @@ export default function Hero() {
                                     repeat: Infinity,
                                     ease: "linear",
                                 }}
-                                className="absolute -inset-6 rounded-full opacity-60"
+                                className={cn(
+                                    "absolute -inset-6 rounded-full opacity-60"
+                                )}
                                 style={{
                                     background:
                                         "conic-gradient(from 0deg, transparent 70%, #22d3ee, transparent)",
                                 }}
                             />
 
-                            <div className="absolute -inset-1 rounded-full bg-linear-to-br from-cyan-400/30 via-transparent to-blue-600/20 blur-md" />
+                            <div
+                                className={cn(
+                                    "absolute -inset-1 rounded-full bg-linear-to-br blur-md",
+                                    "from-cyan-400/30 via-transparent to-blue-600/20"
+                                )}
+                            />
 
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
@@ -294,7 +427,10 @@ export default function Hero() {
                                     repeat: Infinity,
                                     ease: "easeInOut",
                                 }}
-                                className="relative h-64 w-64 overflow-hidden rounded-full border-2 border-cyan-500/40 sm:h-100 sm:w-100"
+                                className={cn(
+                                    "relative h-64 w-64 overflow-hidden rounded-full border-2 sm:h-100 sm:w-100",
+                                    "border-cyan-500/40"
+                                )}
                                 style={{
                                     boxShadow:
                                         "0 0 0 1px rgba(34,211,238,0.1), 0 0 60px rgba(34,211,238,0.12), 0 30px 80px rgba(0,0,0,0.5)",
@@ -303,9 +439,14 @@ export default function Hero() {
                                 <img
                                     src="/images/profile.jpg"
                                     alt={personalInfo.name}
-                                    className="h-full w-full object-cover"
+                                    className={cn("h-full w-full object-cover")}
                                 />
-                                <div className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-b from-transparent via-transparent to-slate-950/30" />
+                                <div
+                                    className={cn(
+                                        "pointer-events-none absolute inset-0 rounded-full bg-linear-to-b",
+                                        "from-transparent via-transparent to-slate-950/30"
+                                    )}
+                                />
                             </motion.div>
 
                             {personalInfo.floating_badges.map((badge, i) => (
@@ -319,22 +460,42 @@ export default function Hero() {
                                         delay: i * 0.8,
                                     }}
                                     whileHover={{ scale: 1.08 }}
-                                    className={`${badge.pos} absolute rounded-xl border border-slate-700/80 bg-slate-900 px-3 py-2 font-mono text-xs font-bold shadow-xl shadow-black/40 backdrop-blur-sm`}
+                                    className={cn(
+                                        "absolute rounded-xl border px-3 py-2 font-mono text-xs font-bold shadow-xl shadow-black/40 backdrop-blur-sm",
+                                        "border-slate-700/80 bg-slate-900",
+                                        badge.pos
+                                    )}
                                     style={{ color: badge.color }}
                                 >
                                     <span
-                                        className={`flex items-center gap-1.5 ${badge.color}`}
+                                        className={cn(
+                                            "flex items-center gap-1.5",
+                                            badge.color
+                                        )}
                                     >
                                         <span
-                                            className={`h-1.5 w-1.5 rounded-full ${badge.bg_color}`}
+                                            className={cn(
+                                                "h-1.5 w-1.5 rounded-full",
+                                                badge.bg_color
+                                            )}
                                         />
                                         {badge.text}
                                     </span>
                                 </motion.div>
                             ))}
 
-                            <div className="absolute -top-3 -right-3 h-6 w-6 rounded-tr-lg border-t-2 border-r-2 border-cyan-500/50" />
-                            <div className="absolute -bottom-3 -left-3 h-6 w-6 rounded-bl-lg border-b-2 border-l-2 border-cyan-500/50" />
+                            <div
+                                className={cn(
+                                    "absolute -top-3 -right-3 h-6 w-6 rounded-tr-lg border-t-2 border-r-2",
+                                    "border-cyan-500/50"
+                                )}
+                            />
+                            <div
+                                className={cn(
+                                    "absolute -bottom-3 -left-3 h-6 w-6 rounded-bl-lg border-b-2 border-l-2",
+                                    "border-cyan-500/50"
+                                )}
+                            />
                         </div>
                     </motion.div>
                 </div>
@@ -344,12 +505,24 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.8 }}
-                    className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+                    className={cn(
+                        "absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+                    )}
                 >
-                    <span className="font-mono text-sm tracking-[0.2em] text-slate-400 uppercase">
+                    <span
+                        className={cn(
+                            "font-mono text-sm tracking-[0.2em] uppercase",
+                            "text-slate-400"
+                        )}
+                    >
                         scroll
                     </span>
-                    <div className="relative h-10 w-px overflow-hidden rounded-full bg-slate-800">
+                    <div
+                        className={cn(
+                            "relative h-10 w-px overflow-hidden rounded-full",
+                            "bg-slate-800"
+                        )}
+                    >
                         <motion.div
                             animate={{ y: ["-100%", "200%"] }}
                             transition={{
@@ -357,7 +530,10 @@ export default function Hero() {
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                            className="absolute inset-x-0 h-1/2 rounded-full bg-linear-to-b from-transparent via-cyan-400 to-transparent"
+                            className={cn(
+                                "absolute inset-x-0 h-1/2 rounded-full bg-linear-to-b",
+                                "from-transparent via-cyan-400 to-transparent"
+                            )}
                         />
                     </div>
                 </motion.div>

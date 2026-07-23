@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import { personalInfo } from "@/data/Personal-info"
 import GridBackground from "@/components/grid-background"
+import { cn } from "@/lib/utils"
 
 const focuses = [
     {
@@ -71,49 +72,100 @@ export default function AboutMe() {
         <section
             id="about"
             ref={ref}
-            className="relative overflow-hidden py-28"
+            className={cn("relative overflow-hidden py-28")}
         >
             <GridBackground className="opacity-15" />
 
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-[10%] left-[5%] h-130 w-130 rounded-full bg-cyan-500/10 blur-[120px]" />
-                <div className="absolute right-[5%] bottom-[10%] h-130 w-130 rounded-full bg-emerald-500/10 blur-[120px]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)] bg-size-[32px_32px]" />
+            <div
+                className={cn(
+                    "pointer-events-none absolute inset-0 overflow-hidden"
+                )}
+            >
+                <div
+                    className={cn(
+                        "absolute top-[10%] left-[5%] h-130 w-130 rounded-full blur-[120px]",
+                        "bg-cyan-500/10"
+                    )}
+                />
+                <div
+                    className={cn(
+                        "absolute right-[5%] bottom-[10%] h-130 w-130 rounded-full blur-[120px]",
+                        "bg-emerald-500/10"
+                    )}
+                />
+                <div
+                    className={cn(
+                        "absolute inset-0 bg-size-[32px_32px]",
+                        "bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)]"
+                    )}
+                />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div
+                className={cn(
+                    "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+                )}
+            >
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="mb-20 text-center"
+                    className={cn("mb-20 text-center")}
                 >
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1 backdrop-blur-sm">
-                        <Terminal size={14} className="text-cyan-400" />
-                        <span className="font-mono text-xs font-semibold tracking-wider text-slate-400 uppercase">
+                    <div
+                        className={cn(
+                            "mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 backdrop-blur-sm",
+                            "border-slate-800 bg-slate-900/50"
+                        )}
+                    >
+                        <Terminal size={14} className={cn("text-cyan-400")} />
+                        <span
+                            className={cn(
+                                "font-mono text-xs font-semibold tracking-wider uppercase",
+                                "text-slate-400"
+                            )}
+                        >
                             System.Profile
                         </span>
                     </div>
-                    <h2 className="mb-4 text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl">
-                        Qui suis-<span className="text-cyan-400">je ?</span>
+                    <h2
+                        className={cn(
+                            "mb-4 text-4xl font-bold tracking-tight sm:text-5xl",
+                            "text-slate-50"
+                        )}
+                    >
+                        Qui suis-
+                        <span className={cn("text-cyan-400")}>je ?</span>
                     </h2>
-                    <p className="mx-auto max-w-2xl text-lg font-light text-slate-400">
+                    <p
+                        className={cn(
+                            "mx-auto max-w-2xl text-lg font-light",
+                            "text-slate-400"
+                        )}
+                    >
                         Professionnel Full Stack et DevOps, je bâtis des
                         architectures modernes.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
+                <div
+                    className={cn(
+                        "grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16"
+                    )}
+                >
                     <motion.div
                         variants={slideInLeft}
                         initial="hidden"
                         animate={inView ? "visible" : "hidden"}
                     >
-                        <div className="mb-12 space-y-6">
+                        <div className={cn("mb-12 space-y-6")}>
                             {personalInfo.bio.split("\n\n").map((para, i) => (
                                 <p
                                     key={i}
-                                    className="text-[15px] leading-relaxed font-normal text-slate-300"
+                                    className={cn(
+                                        "text-[15px] leading-relaxed font-normal",
+                                        "text-slate-300"
+                                    )}
                                 >
                                     {para}
                                 </p>
@@ -121,15 +173,25 @@ export default function AboutMe() {
                         </div>
 
                         <div>
-                            <p className="mb-6 flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-slate-500 uppercase">
-                                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                            <p
+                                className={cn(
+                                    "mb-6 flex items-center gap-2 font-mono text-xs font-semibold tracking-wider uppercase",
+                                    "text-slate-500"
+                                )}
+                            >
+                                <span
+                                    className={cn(
+                                        "h-2 w-2 rounded-full",
+                                        "bg-emerald-500"
+                                    )}
+                                />
                                 Domaines d'expertise
                             </p>
                             <motion.div
                                 variants={staggerContainer}
                                 initial="hidden"
                                 animate={inView ? "visible" : "hidden"}
-                                className="grid grid-cols-2 gap-4"
+                                className={cn("grid grid-cols-2 gap-4")}
                             >
                                 {focuses.map(
                                     ({ icon: Icon, label, desc, color }) => (
@@ -140,15 +202,24 @@ export default function AboutMe() {
                                                 y: -4,
                                                 transition: { duration: 0.2 },
                                             }}
-                                            className="group relative cursor-default overflow-hidden rounded-xl border border-slate-800/60 bg-slate-900/40 p-4 backdrop-blur-sm transition-all duration-300 hover:bg-slate-800/40"
+                                            className={cn(
+                                                "group relative cursor-default overflow-hidden rounded-xl border p-4 backdrop-blur-sm transition-all duration-300",
+                                                "border-slate-800/60 bg-slate-900/40 hover:bg-slate-800/40"
+                                            )}
                                         >
                                             <div
-                                                className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_50%_0%,${color}15_0%,transparent_70%)]`}
+                                                className={cn(
+                                                    "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100",
+                                                    `bg-[radial-gradient(circle_at_50%_0%,${color}15_0%,transparent_70%)]`
+                                                )}
                                             />
 
-                                            <div className="relative">
+                                            <div className={cn("relative")}>
                                                 <div
-                                                    className={`mb-3 flex h-9 w-9 items-center justify-center rounded-lg border transition-colors duration-300 bg-[${color}10] border-[${color}30] shadow-[0_0_15px_-3px_${color}20]`}
+                                                    className={cn(
+                                                        "mb-3 flex h-9 w-9 items-center justify-center rounded-lg border transition-colors duration-300",
+                                                        `bg-[${color}10] border-[${color}30] shadow-[0_0_15px_-3px_${color}20]`
+                                                    )}
                                                 >
                                                     <Icon
                                                         size={16}
@@ -156,10 +227,20 @@ export default function AboutMe() {
                                                         strokeWidth={2}
                                                     />
                                                 </div>
-                                                <div className="mb-1 text-sm font-semibold text-slate-100 transition-colors group-hover:text-white">
+                                                <div
+                                                    className={cn(
+                                                        "mb-1 text-sm font-semibold transition-colors",
+                                                        "text-slate-100 group-hover:text-white"
+                                                    )}
+                                                >
                                                     {label}
                                                 </div>
-                                                <div className="font-mono text-[11px] tracking-wide text-slate-500">
+                                                <div
+                                                    className={cn(
+                                                        "font-mono text-[11px] tracking-wide",
+                                                        "text-slate-500"
+                                                    )}
+                                                >
                                                     {desc}
                                                 </div>
                                             </div>
@@ -175,333 +256,414 @@ export default function AboutMe() {
                         initial="hidden"
                         animate={inView ? "visible" : "hidden"}
                     >
-                        <div className="relative overflow-hidden rounded-xl border border-slate-800/60 bg-gray-900/40 shadow-2xl shadow-black/40">
-                            <div className="flex items-center justify-between border-b border-slate-800/60 bg-gray-900 px-4 py-3">
-                                <div className="flex items-center gap-2">
-                                    <div className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                                    <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-                                    <div className="h-3 w-3 rounded-full bg-[#28ca41]" />
+                        <div
+                            className={cn(
+                                "relative overflow-hidden rounded-xl border shadow-2xl shadow-black/40",
+                                "border-slate-800/60 bg-gray-900/40"
+                            )}
+                        >
+                            <div
+                                className={cn(
+                                    "flex items-center justify-between border-b px-4 py-3",
+                                    "border-slate-800/60 bg-gray-900"
+                                )}
+                            >
+                                <div className={cn("flex items-center gap-2")}>
+                                    <div
+                                        className={cn(
+                                            "h-3 w-3 rounded-full",
+                                            "bg-[#ff5f57]"
+                                        )}
+                                    />
+                                    <div
+                                        className={cn(
+                                            "h-3 w-3 rounded-full",
+                                            "bg-[#ffbd2e]"
+                                        )}
+                                    />
+                                    <div
+                                        className={cn(
+                                            "h-3 w-3 rounded-full",
+                                            "bg-[#28ca41]"
+                                        )}
+                                    />
                                 </div>
-                                <span className="font-mono text-xs text-slate-500">
+                                <span
+                                    className={cn(
+                                        "font-mono text-xs",
+                                        "text-slate-500"
+                                    )}
+                                >
                                     profile.py
                                 </span>
-                                <div className="w-14" />
+                                <div className={cn("w-14")} />
                             </div>
 
-                            <div className="overflow-x-auto p-5">
-                                <div className="min-w-75 space-y-1 font-mono text-[13px] leading-relaxed">
-                                    <div className="text-slate-500 italic">
+                            <div className={cn("overflow-x-auto p-5")}>
+                                <div
+                                    className={cn(
+                                        "min-w-75 space-y-1 font-mono text-[13px] leading-relaxed"
+                                    )}
+                                >
+                                    <div
+                                        className={cn(
+                                            "italic",
+                                            "text-slate-500"
+                                        )}
+                                    >
                                         # RAHARISON Joshué Agapé — Ingénieur
                                         Full Stack & DevOps
                                     </div>
 
-                                    <div className="mt-4">
-                                        <span className="text-cyan-400">
+                                    <div className={cn("mt-4")}>
+                                        <span className={cn("text-cyan-400")}>
                                             class{" "}
                                         </span>
-                                        <span className="text-sky-300">
+                                        <span className={cn("text-sky-300")}>
                                             Engineer
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :
                                         </span>
                                     </div>
 
-                                    <div className="pl-4">
-                                        <span className="text-cyan-400">
+                                    <div className={cn("pl-4")}>
+                                        <span className={cn("text-cyan-400")}>
                                             def{" "}
                                         </span>
-                                        <span className="text-sky-300">
+                                        <span className={cn("text-sky-300")}>
                                             __init__
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             (
                                         </span>
-                                        <span className="text-orange-400/80">
+                                        <span
+                                            className={cn("text-orange-400/80")}
+                                        >
                                             self
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ):
                                         </span>
                                     </div>
 
-                                    <div className="pl-8">
-                                        <span className="text-orange-400/80">
+                                    <div className={cn("pl-8")}>
+                                        <span
+                                            className={cn("text-orange-400/80")}
+                                        >
                                             self
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             .
                                         </span>
-                                        <span className="text-slate-200">
+                                        <span className={cn("text-slate-200")}>
                                             name
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             {" "}
                                             ={" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "{personalInfo.name}"
                                         </span>
                                     </div>
 
-                                    <div className="pl-8">
-                                        <span className="text-orange-400/80">
+                                    <div className={cn("pl-8")}>
+                                        <span
+                                            className={cn("text-orange-400/80")}
+                                        >
                                             self
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             .
                                         </span>
-                                        <span className="text-slate-200">
+                                        <span className={cn("text-slate-200")}>
                                             birth_date
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             {" "}
                                             ={" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "{personalInfo.birth}"
                                         </span>
                                     </div>
 
-                                    <div className="pl-8">
-                                        <span className="text-orange-400/80">
+                                    <div className={cn("pl-8")}>
+                                        <span
+                                            className={cn("text-orange-400/80")}
+                                        >
                                             self
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             .
                                         </span>
-                                        <span className="text-slate-200">
+                                        <span className={cn("text-slate-200")}>
                                             languages
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             {" "}
                                             = [
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Malagasy"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Français"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Anglais"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ]
                                         </span>
                                     </div>
 
-                                    <div className="pl-8">
-                                        <span className="text-orange-400/80">
+                                    <div className={cn("pl-8")}>
+                                        <span
+                                            className={cn("text-orange-400/80")}
+                                        >
                                             self
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             .
                                         </span>
-                                        <span className="text-slate-200">
+                                        <span className={cn("text-slate-200")}>
                                             status
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             {" "}
                                             ={" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "À l'écoute d'opportunités"
                                         </span>
                                     </div>
 
-                                    <div className="mt-4 pl-4">
-                                        <span className="text-cyan-400">
+                                    <div className={cn("mt-4 pl-4")}>
+                                        <span className={cn("text-cyan-400")}>
                                             def{" "}
                                         </span>
-                                        <span className="text-sky-300">
+                                        <span className={cn("text-sky-300")}>
                                             get_education
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             (
                                         </span>
-                                        <span className="text-orange-400/80">
+                                        <span
+                                            className={cn("text-orange-400/80")}
+                                        >
                                             self
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ):
                                         </span>
                                     </div>
 
-                                    <div className="pl-8">
-                                        <span className="text-cyan-400">
+                                    <div className={cn("pl-8")}>
+                                        <span className={cn("text-cyan-400")}>
                                             return{" "}
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             [
                                         </span>
                                     </div>
 
-                                    <div className="pl-12">
-                                        <span className="text-slate-400">
+                                    <div className={cn("pl-12")}>
+                                        <span className={cn("text-slate-400")}>
                                             {"{"}
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "degree"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Master Professionnelle (M2)"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "field"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Génie Logiciel & Bases de Données"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "institution"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Université de Fianarantsoa"
                                         </span>
                                     </div>
-                                    <div className="pl-12">
-                                        <span className="text-slate-400">
+                                    <div className={cn("pl-12")}>
+                                        <span className={cn("text-slate-400")}>
                                             {"}"}
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
 
-                                    <div className="pl-12">
-                                        <span className="text-slate-400">
+                                    <div className={cn("pl-12")}>
+                                        <span className={cn("text-slate-400")}>
                                             {"{"}
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "degree"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Licence Professionnelle"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "field"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Génie Logiciel & Bases de Données"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "institution"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Université de Fianarantsoa"
                                         </span>
                                     </div>
-                                    <div className="pl-12">
-                                        <span className="text-slate-400">
+                                    <div className={cn("pl-12")}>
+                                        <span className={cn("text-slate-400")}>
                                             {"}"}
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
 
-                                    <div className="pl-12">
-                                        <span className="text-slate-400">
+                                    <div className={cn("pl-12")}>
+                                        <span className={cn("text-slate-400")}>
                                             {"{"}
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "degree"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Baccalauréat Scientifique"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "field"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Série C"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             ,
                                         </span>
                                     </div>
-                                    <div className="pl-16">
-                                        <span className="text-sky-300">
+                                    <div className={cn("pl-16")}>
+                                        <span className={cn("text-sky-300")}>
                                             "institution"
                                         </span>
-                                        <span className="text-slate-400">
+                                        <span className={cn("text-slate-400")}>
                                             :{" "}
                                         </span>
-                                        <span className="text-emerald-400">
+                                        <span
+                                            className={cn("text-emerald-400")}
+                                        >
                                             "Saint Joseph de Cluny Tambohobe,
                                             Fianarantsoa"
                                         </span>
                                     </div>
-                                    <div className="pl-12">
-                                        <span className="text-slate-400">
+                                    <div className={cn("pl-12")}>
+                                        <span className={cn("text-slate-400")}>
                                             {"}"}
                                         </span>
                                     </div>
 
-                                    <div className="pl-8">
-                                        <span className="text-slate-400">
+                                    <div className={cn("pl-8")}>
+                                        <span className={cn("text-slate-400")}>
                                             ]
                                         </span>
                                     </div>
@@ -510,12 +672,15 @@ export default function AboutMe() {
                         </div>
 
                         {/* Bottom Tags */}
-                        <div className="mt-6 flex flex-wrap gap-3">
+                        <div className={cn("mt-6 flex flex-wrap gap-3")}>
                             {tags.map((chip) => (
                                 <motion.span
                                     key={chip.text}
                                     whileHover={{ scale: 1.05, y: -1 }}
-                                    className="inline-flex cursor-default items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1.5 font-mono text-xs font-medium text-slate-300 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/30 hover:text-cyan-400"
+                                    className={cn(
+                                        "inline-flex cursor-default items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-xs font-medium backdrop-blur-sm transition-all duration-300",
+                                        "border-slate-800 bg-slate-900/50 text-slate-300 hover:border-cyan-500/30 hover:text-cyan-400"
+                                    )}
                                 >
                                     <chip.icon size={12} strokeWidth={2.5} />
                                     {chip.text}
