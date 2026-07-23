@@ -11,10 +11,11 @@ import Services from "@/components/sections/services"
 import Skills from "@/components/sections/skills"
 import ToolBox from "@/components/sections/ToolBox"
 import WorkProcess from "@/components/sections/work-process"
+import { cn } from "@/lib/utils"
 
 export default function App() {
     return (
-        <main className="relative min-h-screen w-full bg-gray-950">
+        <main className={cn("relative min-h-screen w-full", "bg-gray-950")}>
             <CustomCursor />
 
             <Header />

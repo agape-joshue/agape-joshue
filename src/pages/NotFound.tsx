@@ -1,53 +1,102 @@
 import { ArrowLeft, ShieldAlert } from "lucide-react"
 import GridBackground from "@/components/grid-background"
 import CustomCursor from "@/components/custom-cursor"
+import { cn } from "@/lib/utils"
 
 export default function NotFoundPage() {
     return (
-        <main className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gray-950 px-6 text-center antialiased">
+        <main
+            className={cn(
+                "relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-6 text-center antialiased",
+                "bg-gray-950"
+            )}
+        >
             <CustomCursor />
 
-            <div className="absolute inset-0 z-0">
-                <GridBackground className="opacity-25" />
-                <div className="pointer-events-none absolute top-1/2 left-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
-                <div className="pointer-events-none absolute top-1/3 left-1/4 h-75 w-75 rounded-full bg-emerald-500/5 blur-[100px]" />
+            <div className={cn("absolute inset-0 z-0")}>
+                <GridBackground className={cn("opacity-25")} />
+                <div
+                    className={cn(
+                        "pointer-events-none absolute top-1/2 left-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]",
+                        "bg-cyan-500/10"
+                    )}
+                />
+                <div
+                    className={cn(
+                        "pointer-events-none absolute top-1/3 left-1/4 h-75 w-75 rounded-full blur-[100px]",
+                        "bg-emerald-500/5"
+                    )}
+                />
             </div>
 
-            <div className="relative z-10 flex max-w-xl flex-col items-center">
-                <div className="mb-6 flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-950/40 px-4 py-1.5 text-sm font-medium tracking-wide text-cyan-400 backdrop-blur-md">
-                    <ShieldAlert size={16} className="text-cyan-400" />
+            <div
+                className={cn(
+                    "relative z-10 flex max-w-xl flex-col items-center"
+                )}
+            >
+                <div
+                    className={cn(
+                        "mb-6 flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium tracking-wide backdrop-blur-md",
+                        "border-cyan-500/30 bg-cyan-950/40 text-cyan-400"
+                    )}
+                >
+                    <ShieldAlert size={16} className={cn("text-cyan-400")} />
                     <span>Erreur 404</span>
                 </div>
 
-                <h1 className="bg-linear-to-b from-white via-gray-300 to-gray-800 bg-clip-text text-8xl font-black tracking-tighter text-transparent sm:text-9xl">
+                <h1
+                    className={cn(
+                        "bg-linear-to-b bg-clip-text text-8xl font-black tracking-tighter text-transparent sm:text-9xl",
+                        "from-white via-gray-300 to-gray-800"
+                    )}
+                >
                     404
                 </h1>
 
-                <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                <h2
+                    className={cn(
+                        "mt-4 text-2xl font-semibold tracking-tight sm:text-3xl",
+                        "text-white"
+                    )}
+                >
                     Page introuvable
                 </h2>
 
-                <p className="mt-4 text-base leading-7 text-gray-400">
+                <p className={cn("mt-4 text-base leading-7", "text-gray-400")}>
                     Désolé, la page que vous recherchez semble avoir été
                     déplacée, supprimée ou n'a jamais existé. Vérifiez l'adresse
                     URL ou retournez à l'accueil.
                 </p>
 
-                <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <div
+                    className={cn(
+                        "mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+                    )}
+                >
                     <button
                         onClick={() => window.history.back()}
-                        className="group flex items-center justify-center gap-2 rounded-xl border border-gray-800 bg-gray-900/50 px-5 py-3 text-sm font-medium text-gray-300 transition-all duration-200 hover:border-gray-700 hover:bg-gray-900 hover:text-white"
+                        className={cn(
+                            "group flex items-center justify-center gap-2 rounded-xl border px-5 py-3 text-sm font-medium transition-all duration-200",
+                            "border-gray-800 bg-gray-900/50 text-gray-300 hover:border-gray-700 hover:bg-gray-900 hover:text-white"
+                        )}
                     >
                         <ArrowLeft
                             size={16}
-                            className="transition-transform group-hover:-translate-x-0.5"
+                            className={cn(
+                                "transition-transform group-hover:-translate-x-0.5"
+                            )}
                         />
                         <span>Retour en arrière</span>
                     </button>
                 </div>
             </div>
 
-            <div className="absolute bottom-6 z-10 text-xs text-gray-600">
+            <div
+                className={cn(
+                    "absolute bottom-6 z-10 text-xs",
+                    "text-gray-600"
+                )}
+            >
                 L'adresse URL est peut-être incorrecte.
             </div>
         </main>
