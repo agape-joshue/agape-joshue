@@ -67,7 +67,7 @@ export type ToolBox = {
 
 export const toolbox: ToolBox[] = [
     {
-        source: "https://github.com/joshue-agape/git-cli",
+        source: "https://github.com/raharison-joshue-agape/ps-git-cli",
         title: "Git CLI",
         description:
             "Alias prédéfinis pour accélérer vos flux de travail et la gestion de vos versions.",
@@ -75,7 +75,7 @@ export const toolbox: ToolBox[] = [
         type: "Alias PowerShell Windows",
     },
     {
-        source: "https://github.com/joshue-agape/docker-cli",
+        source: "https://github.com/raharison-joshue-agape/ps-docker-aliases",
         title: "Docker CLI",
         description:
             "Alias prédéfinis pour accélérer la gestion et le déploiement de vos conteneurs.",
@@ -83,7 +83,7 @@ export const toolbox: ToolBox[] = [
         type: "Alias PowerShell Windows",
     },
     {
-        source: "https://github.com/joshue-agape/express-cli",
+        source: "https://github.com/raharison-joshue-agape/ps-express-aliases",
         title: "Express Project",
         description:
             "Alias prédéfinis pour accélérer l’initialisation et la configuration de projets Express.",
@@ -91,7 +91,7 @@ export const toolbox: ToolBox[] = [
         type: "Alias PowerShell Windows",
     },
     {
-        source: "https://github.com/joshue-agape/python-cli",
+        source: "https://github.com/raharison-joshue-agape/ps-python-cli",
         title: "FastAPI Project",
         description:
             "Alias prédéfinis pour accélérer l’initialisation et la configuration de projets FastAPI.",
@@ -99,7 +99,7 @@ export const toolbox: ToolBox[] = [
         type: "Alias PowerShell Windows",
     },
     {
-        source: "https://github.com/joshue-agape/vue-cli",
+        source: "https://github.com/raharison-joshue-agape/ps-vue-cli",
         title: "VueJS Project",
         description:
             "Alias prédéfinis pour accélérer l’initialisation et la configuration de projets VueJS.",
@@ -107,7 +107,7 @@ export const toolbox: ToolBox[] = [
         type: "Alias PowerShell Windows",
     },
     {
-        source: "https://github.com/joshue-agape/react-cli",
+        source: "https://github.com/raharison-joshue-agape/ps-react-cli",
         title: "ReactJS Project",
         description:
             "Alias prédéfinis pour accélérer l’initialisation et la configuration de projets ReactJS.",
