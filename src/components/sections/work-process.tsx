@@ -7,6 +7,7 @@ import {
     Server,
     type LucideIcon,
 } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface WorkStep {
     title: string
@@ -43,17 +44,24 @@ export default function WorkProcess() {
     ]
 
     return (
-        <section id="work-process" className="relative py-28">
-            <GridBackground className="opacity-25" />
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid items-center gap-16 xl:grid-cols-2 xl:gap-32">
+        <section id="work-process" className={cn("relative py-28")}>
+            <GridBackground className={cn("opacity-25")} />
+            <div className={cn("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8")}>
+                <div
+                    className={cn(
+                        "grid items-center gap-16 xl:grid-cols-2 xl:gap-32"
+                    )}
+                >
                     {/* LEFT */}
-                    <div className="space-y-6">
+                    <div className={cn("space-y-6")}>
                         <motion.h2
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="justify-center text-emerald-400 lg:justify-start"
+                            className={cn(
+                                "justify-center lg:justify-start",
+                                "text-emerald-400"
+                            )}
                         >
                             Méthodologie
                         </motion.h2>
@@ -62,10 +70,13 @@ export default function WorkProcess() {
                             initial={{ opacity: 0, x: -25 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="text-center text-3xl font-bold text-gray-300 md:text-4xl lg:text-start"
+                            className={cn(
+                                "text-center text-3xl font-bold md:text-4xl lg:text-start",
+                                "text-gray-300"
+                            )}
                         >
                             Comment je bâtis{" "}
-                            <span className="text-emerald-400">
+                            <span className={cn("text-emerald-400")}>
                                 mes systèmes
                             </span>
                         </motion.h3>
@@ -74,7 +85,10 @@ export default function WorkProcess() {
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="text-center text-sm leading-relaxed text-gray-400 md:text-base lg:text-start"
+                            className={cn(
+                                "text-center text-sm leading-relaxed md:text-base lg:text-start",
+                                "text-gray-400"
+                            )}
                         >
                             Suivant une démarche d'ingénierie structurée, je
                             mets l'accent sur la scalabilité, la performance et
@@ -87,7 +101,10 @@ export default function WorkProcess() {
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="text-center text-sm leading-relaxed text-gray-400 md:text-base lg:text-start"
+                            className={cn(
+                                "text-center text-sm leading-relaxed md:text-base lg:text-start",
+                                "text-gray-400"
+                            )}
                         >
                             De l'idéation à la mise en production, je m'assure
                             que chaque système soit fiable, observable et
@@ -96,7 +113,7 @@ export default function WorkProcess() {
                     </div>
 
                     {/* RIGHT */}
-                    <div className="grid grid-cols-2 gap-x-6">
+                    <div className={cn("grid grid-cols-2 gap-x-6")}>
                         {workStepData.map((step, i) => {
                             const Icon = step.icon
 
@@ -111,24 +128,51 @@ export default function WorkProcess() {
                                         delay: i * 0.08,
                                         ease: "easeOut",
                                     }}
-                                    className={`group relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/40 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${i % 2 === 1 ? "mt-8" : "mb-8"}`}
+                                    className={cn(
+                                        "group relative overflow-hidden rounded-2xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md",
+                                        "border-gray-800 bg-gray-900/40",
+                                        i % 2 === 1 ? "mt-8" : "mb-8"
+                                    )}
                                 >
-                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 transition group-hover:bg-emerald-500/15">
+                                    <div
+                                        className={cn(
+                                            "mb-4 flex h-12 w-12 items-center justify-center rounded-xl transition",
+                                            "bg-emerald-500/10 group-hover:bg-emerald-500/15"
+                                        )}
+                                    >
                                         <Icon
                                             size={20}
-                                            className="text-emerald-400 transition group-hover:scale-110"
+                                            className={cn(
+                                                "transition group-hover:scale-110",
+                                                "text-emerald-400"
+                                            )}
                                         />
                                     </div>
 
-                                    <div className="mb-2 font-mono text-xs text-gray-500 opacity-60">
+                                    <div
+                                        className={cn(
+                                            "mb-2 font-mono text-xs opacity-60",
+                                            "text-gray-500"
+                                        )}
+                                    >
                                         0{i + 1}
                                     </div>
 
-                                    <h3 className="mb-2 text-base font-semibold text-gray-300">
+                                    <h3
+                                        className={cn(
+                                            "mb-2 text-base font-semibold",
+                                            "text-gray-300"
+                                        )}
+                                    >
                                         {step.title}
                                     </h3>
 
-                                    <p className="text-sm leading-relaxed text-gray-400">
+                                    <p
+                                        className={cn(
+                                            "text-sm leading-relaxed",
+                                            "text-gray-400"
+                                        )}
+                                    >
                                         {step.description}
                                     </p>
                                 </motion.div>

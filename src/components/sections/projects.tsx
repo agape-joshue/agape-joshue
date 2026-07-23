@@ -13,6 +13,7 @@ import {
 import { useMemo, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import GridBackground from "@/components/grid-background"
+import { cn } from "@/lib/utils"
 
 const GithubIcon = () => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -66,7 +67,10 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
             whileHover={{ y: -6 }}
-            className="group relative overflow-hidden rounded-xl border bg-[#0d1117] backdrop-blur-xl transition-all duration-500"
+            className={cn(
+                "group relative overflow-hidden rounded-xl border backdrop-blur-xl transition-all duration-500",
+                "bg-[#0d1117]"
+            )}
             style={{
                 borderColor: hovered
                     ? `${colors.text}40`
@@ -77,46 +81,66 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
             }}
         >
             <motion.div
-                className="absolute top-0 right-0 left-0 h-px bg-linear-to-r from-transparent via-current to-transparent"
+                className={cn(
+                    "absolute top-0 right-0 left-0 h-px bg-linear-to-r",
+                    "from-transparent via-current to-transparent"
+                )}
                 style={{ color: colors.text }}
                 animate={{ opacity: hovered ? 0.6 : 0.2 }}
                 transition={{ duration: 0.4 }}
             />
 
             <motion.div
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700"
+                className={cn(
+                    "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700"
+                )}
                 style={{
                     background: `radial-gradient(800px circle at ${hovered ? "50%" : "50%"} 0%, ${colors.glow}, transparent 50%)`,
                 }}
                 animate={{ opacity: hovered ? 0.15 : 0 }}
             />
 
-            <div className="relative h-48 overflow-hidden bg-[#161b22]">
+            <div
+                className={cn("relative h-48 overflow-hidden", "bg-[#161b22]")}
+            >
                 <motion.div
                     animate={{ scale: hovered ? 1.05 : 1 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="h-full w-full"
+                    className={cn("h-full w-full")}
                 >
                     <img
                         src={project.image}
                         alt={project.title}
-                        className={`h-full w-full object-cover transition-opacity duration-500 ${
+                        className={cn(
+                            "h-full w-full object-cover transition-opacity duration-500",
                             imageLoaded ? "opacity-100" : "opacity-0"
-                        }`}
+                        )}
                         onLoad={() => setImageLoaded(true)}
                     />
 
                     {!imageLoaded && (
-                        <div className="absolute inset-0 animate-pulse bg-linear-to-br from-[#161b22] to-[#0d1117]" />
+                        <div
+                            className={cn(
+                                "absolute inset-0 animate-pulse bg-linear-to-br",
+                                "from-[#161b22] to-[#0d1117]"
+                            )}
+                        />
                     )}
                 </motion.div>
 
-                <div className="absolute inset-0 bg-linear-to-t from-[#0d1117] via-[#0d1117]/40 to-transparent opacity-60" />
+                <div
+                    className={cn(
+                        "absolute inset-0 bg-linear-to-t opacity-60",
+                        "from-[#0d1117] via-[#0d1117]/40 to-transparent"
+                    )}
+                />
 
-                <div className="absolute top-3 left-3 z-10">
+                <div className={cn("absolute top-3 left-3 z-10")}>
                     <motion.span
                         whileHover={{ scale: 1.05 }}
-                        className="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-semibold backdrop-blur-md"
+                        className={cn(
+                            "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-semibold backdrop-blur-md"
+                        )}
                         style={{
                             backgroundColor: `${colors.bg}`,
                             borderColor: `${colors.text}30`,
@@ -124,67 +148,104 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
                         }}
                     >
                         <div
-                            className={`h-1.5 w-1.5 rounded-full bg-[${colors.text}]`}
+                            className={cn(
+                                "h-1.5 w-1.5 rounded-full",
+                                `bg-[${colors.text}]`
+                            )}
                         />
                         {project.category}
                     </motion.span>
                 </div>
 
-                <div className="absolute top-3 right-3 z-10">
+                <div className={cn("absolute top-3 right-3 z-10")}>
                     <motion.div
                         whileHover={{ scale: 1.05 }}
-                        className="flex items-center gap-1 rounded-md border border-[#30363d]/80 bg-[#0d1117]/90 px-2 py-1 font-mono text-[11px] backdrop-blur-md"
+                        className={cn(
+                            "flex items-center gap-1 rounded-md border px-2 py-1 font-mono text-[11px] backdrop-blur-md",
+                            "border-[#30363d]/80 bg-[#0d1117]/90"
+                        )}
                     >
                         <Star
                             size={11}
-                            className="text-amber-400"
+                            className={cn("text-amber-400")}
                             fill="currentColor"
                         />
-                        <span className="font-semibold text-[#c9d1d9]">
+                        <span className={cn("font-semibold", "text-[#c9d1d9]")}>
                             {project.stars}
                         </span>
                     </motion.div>
                 </div>
 
-                <div className="absolute right-3 bottom-3 z-10">
+                <div className={cn("absolute right-3 bottom-3 z-10")}>
                     <motion.div
                         animate={{ scale: hovered ? 1.05 : 1 }}
-                        className="flex items-center gap-1.5 rounded-md border border-[#30363d]/80 bg-[#0d1117]/90 px-2 py-1 backdrop-blur-md"
+                        className={cn(
+                            "flex items-center gap-1.5 rounded-md border px-2 py-1 backdrop-blur-md",
+                            "border-[#30363d]/80 bg-[#0d1117]/90"
+                        )}
                     >
                         <motion.div
                             animate={{ opacity: [1, 0.5, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
-                            className="h-1.5 w-1.5 rounded-full"
+                            className={cn("h-1.5 w-1.5 rounded-full")}
                             style={{ backgroundColor: colors.text }}
                         />
-                        <span className="font-mono text-[9px] text-[#8b949e]">
+                        <span
+                            className={cn(
+                                "font-mono text-[9px]",
+                                "text-[#8b949e]"
+                            )}
+                        >
                             Active
                         </span>
                     </motion.div>
                 </div>
             </div>
 
-            <div className="relative z-10 p-5">
-                <h3 className="mb-2 line-clamp-1 text-lg font-bold tracking-tight text-[#f0f6fc] transition-colors group-hover:text-white">
+            <div className={cn("relative z-10 p-5")}>
+                <h3
+                    className={cn(
+                        "mb-2 line-clamp-1 text-lg font-bold tracking-tight transition-colors",
+                        "text-[#f0f6fc] group-hover:text-white"
+                    )}
+                >
                     {project.title}
                 </h3>
 
-                <p className="mb-5 line-clamp-4 min-h-[2.6rem] text-[13px] leading-relaxed text-[#8b949e]">
+                <p
+                    className={cn(
+                        "mb-5 line-clamp-4 min-h-[2.6rem] text-[13px] leading-relaxed",
+                        "text-[#8b949e]"
+                    )}
+                >
                     {project.description}
                 </p>
 
                 {project.metrics && project.metrics.length > 0 && (
-                    <div className="mb-5 grid grid-cols-3 gap-3 rounded-lg border border-[#30363d]/50 bg-[#161b22]/50 p-3">
+                    <div
+                        className={cn(
+                            "mb-5 grid grid-cols-3 gap-3 rounded-lg border p-3",
+                            "border-[#30363d]/50 bg-[#161b22]/50"
+                        )}
+                    >
                         {project.metrics.map((idx) => (
                             <div
                                 key={idx}
-                                className="flex flex-col items-center"
+                                className={cn("flex flex-col items-center")}
                             >
-                                <span className="mb-1 text-[9px] font-semibold tracking-wider text-[#6e7681] uppercase">
+                                <span
+                                    className={cn(
+                                        "mb-1 text-[9px] font-semibold tracking-wider uppercase",
+                                        "text-[#6e7681]"
+                                    )}
+                                >
                                     Metric
                                 </span>
                                 <span
-                                    className={`font-mono text-sm font-bold text-[${colors.text}]`}
+                                    className={cn(
+                                        "font-mono text-sm font-bold",
+                                        `text-[${colors.text}]`
+                                    )}
                                 >
                                     50K+ Users
                                 </span>
@@ -193,25 +254,38 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
                     </div>
                 )}
 
-                <div className="mb-5 flex flex-wrap gap-1.5">
+                <div className={cn("mb-5 flex flex-wrap gap-1.5")}>
                     {project.tags.slice(0, 5).map((tag) => (
                         <motion.span
                             key={tag}
                             whileHover={{ scale: 1.05, y: -1 }}
-                            className="cursor-default rounded border border-[#30363d] px-2 py-0.5 text-[10px] font-medium text-[#7d8590] transition-all hover:border-[#58a6ff]/50 hover:text-[#58a6ff]"
+                            className={cn(
+                                "cursor-default rounded border px-2 py-0.5 text-[10px] font-medium transition-all",
+                                "border-[#30363d] text-[#7d8590] hover:border-[#58a6ff]/50 hover:text-[#58a6ff]"
+                            )}
                         >
                             {tag}
                         </motion.span>
                     ))}
                     {project.tags.length > 5 && (
-                        <span className="px-2 py-0.5 text-[10px] font-medium text-[#6e7681]">
+                        <span
+                            className={cn(
+                                "px-2 py-0.5 text-[10px] font-medium",
+                                "text-[#6e7681]"
+                            )}
+                        >
                             +{project.tags.length - 5}
                         </span>
                     )}
                 </div>
 
-                <div className="flex items-center justify-between border-t border-[#30363d]/60 pt-4">
-                    <div className="flex items-center gap-3">
+                <div
+                    className={cn(
+                        "flex items-center justify-between border-t pt-4",
+                        "border-[#30363d]/60"
+                    )}
+                >
+                    <div className={cn("flex items-center gap-3")}>
                         {project.github && (
                             <motion.a
                                 href={project.github}
@@ -219,7 +293,10 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.1, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="rounded-md p-1.5 text-[#8b949e] transition-all hover:bg-[#30363d]/50 hover:text-white"
+                                className={cn(
+                                    "rounded-md p-1.5 transition-all",
+                                    "text-[#8b949e] hover:bg-[#30363d]/50 hover:text-white"
+                                )}
                                 title="View on GitHub"
                             >
                                 <GithubIcon />
@@ -232,7 +309,9 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.02, x: 2 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-semibold transition-all"
+                                className={cn(
+                                    "flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-semibold transition-all"
+                                )}
                                 style={{
                                     backgroundColor: `${colors.bg}`,
                                     borderColor: `${colors.text}40`,
@@ -250,10 +329,18 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
                             opacity: hovered ? 1 : 0.5,
                             x: hovered ? 0 : 4,
                         }}
-                        className="flex items-center gap-1.5 rounded bg-[#161b22]/50 px-2 py-1"
+                        className={cn(
+                            "flex items-center gap-1.5 rounded px-2 py-1",
+                            "bg-[#161b22]/50"
+                        )}
                     >
-                        <GitBranch size={11} className="text-[#6e7681]" />
-                        <span className="font-mono text-[10px] text-[#8b949e]">
+                        <GitBranch size={11} className={cn("text-[#6e7681]")} />
+                        <span
+                            className={cn(
+                                "font-mono text-[10px]",
+                                "text-[#8b949e]"
+                            )}
+                        >
                             v1.0.4
                         </span>
                     </motion.div>
@@ -261,7 +348,9 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
             </div>
 
             <motion.div
-                className="pointer-events-none absolute inset-0 rounded-xl"
+                className={cn(
+                    "pointer-events-none absolute inset-0 rounded-xl"
+                )}
                 style={{
                     boxShadow: hovered
                         ? `inset 0 0 0 1px ${colors.text}30`
@@ -290,33 +379,79 @@ export default function Projects() {
         <section
             id="projects"
             ref={ref}
-            className="relative overflow-hidden bg-[#06090e] py-28"
+            className={cn("relative overflow-hidden py-28", "bg-[#06090e]")}
         >
-            <GridBackground className="opacity-15" />
+            <GridBackground className={cn("opacity-15")} />
 
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-[10%] left-[5%] h-130 w-130 rounded-full bg-cyan-500/10 blur-[120px]" />
-                <div className="absolute right-[5%] bottom-[10%] h-130 w-130 rounded-full bg-emerald-500/10 blur-[120px]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)] bg-size-[32px_32px]" />
+            <div
+                className={cn(
+                    "pointer-events-none absolute inset-0 overflow-hidden"
+                )}
+            >
+                <div
+                    className={cn(
+                        "absolute top-[10%] left-[5%] h-130 w-130 rounded-full blur-[120px]",
+                        "bg-cyan-500/10"
+                    )}
+                />
+                <div
+                    className={cn(
+                        "absolute right-[5%] bottom-[10%] h-130 w-130 rounded-full blur-[120px]",
+                        "bg-emerald-500/10"
+                    )}
+                />
+                <div
+                    className={cn(
+                        "absolute inset-0 bg-size-[32px_32px]",
+                        "bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)]"
+                    )}
+                />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div
+                className={cn(
+                    "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+                )}
+            >
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="mb-16 text-center"
+                    className={cn("mb-16 text-center")}
                 >
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-3.5 py-1 backdrop-blur-sm">
-                        <Terminal size={14} className="text-cyan-400" />
-                        <span className="font-mono text-[11px] font-semibold tracking-widest text-slate-400 uppercase">
+                    <div
+                        className={cn(
+                            "mb-6 inline-flex items-center gap-2 rounded-full border px-3.5 py-1 backdrop-blur-sm",
+                            "border-slate-800 bg-slate-900/50"
+                        )}
+                    >
+                        <Terminal size={14} className={cn("text-cyan-400")} />
+                        <span
+                            className={cn(
+                                "font-mono text-[11px] font-semibold tracking-widest uppercase",
+                                "text-slate-400"
+                            )}
+                        >
                             System.Projects
                         </span>
                     </div>
-                    <h2 className="mb-4 text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl">
-                        Mes <span className="text-cyan-400">réalisations</span>
+                    <h2
+                        className={cn(
+                            "mb-4 text-4xl font-bold tracking-tight sm:text-5xl",
+                            "text-slate-50"
+                        )}
+                    >
+                        Mes{" "}
+                        <span className={cn("text-cyan-400")}>
+                            réalisations
+                        </span>
                     </h2>
-                    <p className="mx-auto max-w-2xl text-lg font-light text-slate-400">
+                    <p
+                        className={cn(
+                            "mx-auto max-w-2xl text-lg font-light",
+                            "text-slate-400"
+                        )}
+                    >
                         Une sélection rigoureuse de projets prêts pour la
                         production, couvrant le web, le mobile et le DevOps.
                     </p>
@@ -326,9 +461,16 @@ export default function Projects() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.15 }}
-                    className="mb-12 flex flex-wrap items-center justify-center gap-2"
+                    className={cn(
+                        "mb-12 flex flex-wrap items-center justify-center gap-2"
+                    )}
                 >
-                    <div className="mr-2 inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3 py-1.5 font-mono text-xs tracking-wider text-slate-400 uppercase">
+                    <div
+                        className={cn(
+                            "mr-2 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-xs tracking-wider uppercase",
+                            "border-slate-800 bg-slate-900/40 text-slate-400"
+                        )}
+                    >
                         <Filter size={12} />
                         Filtrer
                     </div>
@@ -340,15 +482,14 @@ export default function Projects() {
                                 onClick={() => setActiveCategory(cat)}
                                 whileHover={{ scale: 1.04 }}
                                 whileTap={{ scale: 0.96 }}
-                                className={`rounded-full border px-4 py-1.5 text-sm font-medium backdrop-blur-sm transition-all focus:ring-2 focus:ring-cyan-500/30 focus:outline-none`}
+                                className={cn(
+                                    "rounded-full border px-4 py-1.5 text-sm font-medium backdrop-blur-sm transition-all focus:ring-2 focus:outline-none",
+                                    "focus:ring-cyan-500/30",
+                                    active
+                                        ? "border-[rgba(34,211,238,0.45)] bg-[rgba(34,211,238,0.08)] text-[#22d3ee]"
+                                        : "border-[rgba(30,41,59,0.6)] bg-[rgba(15,23,42,0.55)] text-[#cbd5e1]"
+                                )}
                                 style={{
-                                    background: active
-                                        ? "rgba(34,211,238,0.08)"
-                                        : "rgba(15,23,42,0.55)",
-                                    color: active ? "#22d3ee" : "#cbd5e1",
-                                    borderColor: active
-                                        ? "rgba(34,211,238,0.45)"
-                                        : "rgba(30,41,59,0.6)",
                                     boxShadow: active
                                         ? "0 8px 24px -8px rgba(34,211,238,0.22)"
                                         : "none",
@@ -368,7 +509,9 @@ export default function Projects() {
                             initial="hidden"
                             animate="visible"
                             exit={{ opacity: 0, scale: 0.98 }}
-                            className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 xl:grid-cols-3"
+                            className={cn(
+                                "grid grid-cols-1 items-start gap-6 md:grid-cols-2 xl:grid-cols-3"
+                            )}
                         >
                             {filtered.map((project, index) => (
                                 <ProjectCard key={index} project={project} />
@@ -380,15 +523,33 @@ export default function Projects() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.98 }}
                             transition={{ duration: 0.4 }}
-                            className="flex min-h-90 w-full flex-col items-center justify-center rounded-2xl border border-dashed border-slate-700/60 bg-slate-900/30 p-10 text-center backdrop-blur-xl"
+                            className={cn(
+                                "flex min-h-90 w-full flex-col items-center justify-center rounded-2xl border border-dashed p-10 text-center backdrop-blur-xl",
+                                "border-slate-700/60 bg-slate-900/30"
+                            )}
                         >
-                            <div className="mb-6 rounded-full border border-slate-700/60 bg-slate-800/70 p-4 shadow-inner">
+                            <div
+                                className={cn(
+                                    "mb-6 rounded-full border p-4 shadow-inner",
+                                    "border-slate-700/60 bg-slate-800/70"
+                                )}
+                            >
                                 <FolderGit2 className="h-10 w-10 text-slate-400" />
                             </div>
-                            <h3 className="text-2xl font-semibold tracking-tight text-slate-100">
+                            <h3
+                                className={cn(
+                                    "text-2xl font-semibold tracking-tight",
+                                    "text-slate-100"
+                                )}
+                            >
                                 Aucun projet ne correspond à ce filtre
                             </h3>
-                            <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-400">
+                            <p
+                                className={cn(
+                                    "mt-3 max-w-md text-sm leading-relaxed",
+                                    "text-slate-400"
+                                )}
+                            >
                                 Aucun projet ne correspond actuellement à ce
                                 critère. Veuillez sélectionner une autre
                                 catégorie ou repasser prochainement pour voir
@@ -396,7 +557,10 @@ export default function Projects() {
                             </p>
                             <button
                                 onClick={() => setActiveCategory("All")}
-                                className="mt-6 inline-flex items-center gap-2 rounded-lg border border-slate-700/60 bg-slate-800/70 px-5 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:bg-slate-700/70 focus:ring-2 focus:ring-cyan-500/30 focus:outline-none"
+                                className={cn(
+                                    "mt-6 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors focus:ring-2 focus:outline-none",
+                                    "border-slate-700/60 bg-slate-800/70 text-slate-200 hover:bg-slate-700/70 focus:ring-cyan-500/30"
+                                )}
                             >
                                 <RefreshCcw size={16} />
                                 Réinitialiser les filtres
