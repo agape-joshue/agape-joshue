@@ -13,7 +13,7 @@ export const personalInfo = {
         "En tant que développeur passionné, je suis continuellement motivé par la création de solutions novatrices et par le perfectionnement constant de mes aptitudes techniques.",
     location: "Fianarantsoa 301, Madagascar",
     email: "joshueagape.itpro@gmail.com",
-    github: "https://github.com/agape-joshue",
+    github: "https://github.com/raharison-joshue-agape",
     linkedin: "https://www.linkedin.com/in/joshue-agape",
     map: "https://www.google.com/maps/place//@-21.4227759,47.1116422,150m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     availability: "À l'écoute de nouvelles opportunités",
